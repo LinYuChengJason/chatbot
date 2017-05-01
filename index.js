@@ -15,7 +15,8 @@ app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡
 	response.end();
 });
 
-app.listen(5000); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
+app.listen(process.env.PORT || 5000);
+console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
 
 
 
