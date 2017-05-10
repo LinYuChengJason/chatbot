@@ -37,6 +37,29 @@ app.post('/webhook/', function(req, res){
 	res.sendstatus(200);
 });
 
+var token = "<page_access_token>";
+
+function sendTextMessage(sender, text){
+	messageData = {
+		text:text
+	}
+	request({
+		url:'https://www.facebook.com/%E7%95%A2%E6%A5%AD%E5%B0%88%E9%A1%8C-170319796828236/'
+		qs:{access_token:token},
+		method: 'POST',
+		json:{
+			recipient: {id:sender},
+			message: messageData,
+		}
+	},function(error, response, body){
+		if(error){
+			console.log('Error sending message:', error);
+		}else if (response.body.error){
+			console.log('Error:', response.body.error);
+		}
+	});
+}
+
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
 
