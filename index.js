@@ -15,6 +15,28 @@ app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡
 	response.end();
 });
 
+app.get('/webhook/', function(req, res){
+	if(req.query['hub.verify_token'] === '<validation_token>'){
+		res.send(req.query['hub.challenge']);
+	}
+	res.send('Error, wrong validation token');
+})
+
+app.post('/webhook/', function(req, res){
+	messaging_events = req.body.entry[0].messaging; //©Ò¦³°T®§
+	
+	for(i = 0; i < messaging_events.length; i++){ //¹M¾ú¨C¤@«h
+	
+	event = req.body.entry[0].messaging.[i];
+	sender = event.sender.id; //½Öµoªº°T®§
+	
+	if(event.message && event.message.text){
+		text = event.message.text; //Handle a text message from this sender
+	}
+	}
+	res.sendstatus(200);
+});
+
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
 
