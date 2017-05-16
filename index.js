@@ -33,51 +33,6 @@ app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡
    });
 });
 
-app.get('/webhook/', function(req, res){
-	if(req.query['hub.verify_token'] === '<validation_token>'){
-		res.send(req.query['hub.challenge']);
-	}
-	res.send('Error, wrong validation token');
-})
-
-app.post('/webhook/', function(req, res){
-	messaging_events = req.body.entry[0].messaging; //©Ò¦³°T®§
-	
-	for(i = 0; i < messaging_events.length; i++){ //¹M¾ú¨C¤@«h
-	
-	event = req.body.entry[0].messaging.[i];
-	sender = event.sender.id; //½Öµoªº°T®§
-	
-	if(event.message && event.message.text){
-		text = event.message.text; //Handle a text message from this sender
-	}
-	}
-	res.sendstatus(200);
-});
-
-var token = "<page_access_token>";
-
-function sendTextMessage(sender, text){
-	messageData = {
-		text:text
-	}
-	request({
-		url:'https://www.facebook.com/%E7%95%A2%E6%A5%AD%E5%B0%88%E9%A1%8C-170319796828236/'
-		qs:{access_token:token},
-		method: 'POST',
-		json:{
-			recipient: {id:sender},
-			message: messageData,
-		}
-	},function(error, response, body){
-		if(error){
-			console.log('Error sending message:', error);
-		}else if (response.body.error){
-			console.log('Error:', response.body.error);
-		}
-	});
-}
-
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
 
