@@ -13,7 +13,7 @@ bot.on('message', function(event){
 	console.log(event);
 });
 
-const linebotPraser = bot.parser();
+const linebotParser = bot.parser();
 app.get('/line/test',linebotParser);
 
 var mongodbURL =
