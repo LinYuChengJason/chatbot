@@ -4,9 +4,13 @@ var linebot = require('linebot');
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 var bot = linebot({
-	channel : 1511016044,
+	channelId : 1511016044,
 	channelSecret : 614a1dc79eaefd4ca0c37263634be761,
 	channelAccessToken : TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU=
+});
+
+bot.on('message', function(event){
+	console.log(event);
 });
 
 const linebotPraser = bot.parser();
