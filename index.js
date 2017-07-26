@@ -1,5 +1,7 @@
+var express = require('express'); //require¬°¨Ï¥Î¨º¨Ç¼Ò²Õ
+var mongodb = require('mongodb'); //¨Ï¥Î¼Ò²Õmongodb
 var linebot = require('linebot');
-var express = require('express');
+var app = express(); //«Ø¥ßexpress¹êÅé¡A±Nexpressªì©l¤Æ¡A¥hNEW¤@­Óexpress¡AÅÜ¼Æapp¤~¬O­«ÂI¡C
 
 var bot = linebot({
   "channelId": "1511016044",
@@ -20,12 +22,41 @@ bot.on('message', function(event) {
   }
 });
 
-const app = express();
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
 
-//å› ç‚º express é è¨­èµ° port 3000ï¼Œè€Œ heroku ä¸Šé è¨­å»ä¸æ˜¯ï¼Œè¦é€éä¸‹åˆ—ç¨‹å¼è½‰æ›
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
+var mongodbURL =
+'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //±NMongoDBªº¦ì¸m¦bServerµ{¦¡½X¤¤¥H¤@­ÓÅÜ¼ÆÀx¦s
+
+var myDB; //«Ø¥ß¤@­Ó¥ş°ìÅÜ¼ÆmyDB
+mongodb.MongoClient.connect(mongodbURL, function(err, db){ //¨Ï¥Îmongodb.MongoClientªº¤èªkconnect()¶i¦æ³s½u
+	if(err){                                               //¨Æ¥óºÊÅ¥¾¹¥Î¦b«D¦P¨Bµ{¦¡½X¡A¤£½T©w¦ó®É·|¥Î¨ì
+		console.log(err);                                  //­Y¦^¶Çªº°Ñ¼Æ¦³error¡A¥Îconsole.log()¦L¥X¿ù»~¤º®e
+	} else{
+		myDB = db;                                         //¦bmongoDB¦¨¥\³s½u«á¡A¯d¦ídbª«¥ó
+		console.log('connection success');                 //­Y¨S¦³¿ù»~ªí¥Ü³s½u¦¨¥\¡A¦L¥Xconnection success
+	}
 });
+
+app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡Arequest±a¦³³s±µ¶i¨Óªº¸ê°T(°Ñ¼Æ)¡Aresponse¬°¦^¶Çªº¤º®e¡C
+	var collection = myDB.collection('data'); //¨Ï¥ÎmyDBªº¤èªkcollection('data')¨ú±odata³o­Ócollection
+	collection.find({}).toArray(function(err, docs){ //¨Ï¥Îcollectionªº¤èªkfind()¨ú±o¸ê®Æªí¤ºªº¤º®e¡A{}ªí¥Ü¨ú±o¥ş³¡¤º®e
+		if(err){                                     //¨Ï¥ÎtoArray()±N¸ê®ÆÂà¦¨°}¦C¡Afunctionªºdocs¬OÂà¦¨°}¦C«áªºµ²ªG
+			response.status(406).end();              //Âà°}¦C¹Lµ{­Y¦³err¡A¦^¶Çµ¹¿ù»~½X406¡A¦¹¬°Http¨ó©wª¬ºA½X      
+		} else{                                      //.end()¬°±N¸ê®Æ¦^¶Çµ¹¨Ï¥ÎªÌ
+			response.type('application/json');       //¨S¦³¿ù»~¦^¶Çª¬ºA½X200¨Ãªş±aµÛ¸ê®Æ¡A¦]¬°MongoDB¦sªº¸ê®Æ´N¬OJSON¡A©Ò¥H¤£¥Î¯S§OÂà´«
+			response.status(200).send(docs);
+			response.end();
+		}
+   });
+});
+
+app.listen(process.env.PORT || 5000);
+console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
+
+
+
+
+
+
+
