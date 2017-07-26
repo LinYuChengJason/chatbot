@@ -1,13 +1,13 @@
 var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
-var linebot = require('linebot');
+var linebot = require('linebot'); //使用模組linebot
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 var bot = linebot({
   "channelId": "1511016044",
   "channelSecret": "614a1dc79eaefd4ca0c37263634be761",
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
-});
+}); // 連接line
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
@@ -20,10 +20,10 @@ bot.on('message', function(event) {
       console.log('error');
     });
   }
-});
+}); //使用者打甚麼，LINE回什麼
 
 const linebotParser = bot.parser();
-app.post('/', linebotParser);
+app.post('/', linebotParser); //路徑
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
