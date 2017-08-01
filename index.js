@@ -1,7 +1,15 @@
 var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
+var getJSON = require('get-json'); //使用模組get-json
+
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+var timer; //定義時間
+var weather = []; //定義天氣為矩陣
+
+_getJSON(); //呼叫函式
+
+_bot(); //呼叫函式
 
 var bot = linebot({
   "channelId": "1511016044",
@@ -9,18 +17,45 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
+function _bot() {
 bot.on('message', function(event) {
-  if (event.message.type = 'text') {
+  if (event.message.type == 'text') {
     var msg = event.message.text;
-    event.reply(msg).then(function(data) {
-      // success 
-      console.log(msg);
-    }).catch(function(error) {
-      // error 
-      console.log('error');
+	var replyMsg = '';
+	if (msg.indexOf('weather') != -1) {
+        weather.forEach(function(e, i) {
+          if (msg.indexOf(e[0]) != -1) {
+            replyMsg = e[0] + '的天氣為 ' + e[1];
+          }
+        });
+		if (replyMsg == '') {
+          replyMsg = '請輸入正確的地點';
+        }
+      }
+      if (replyMsg == ''){
+        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+	  }
+      event.reply(replyMsg).then(function(data) {
+        console.log(replyMsg);
+      }).catch(function(error) {
+        console.log('error');
+      });
+    }
+  });
+} //回復天氣狀態
+
+function _getJSON() {
+  clearTimeout(timer);
+  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
+    response.forEach(function(e, i) {
+      weather[i] = [];
+      weather[i][0] = e.SiteName;
+      weather[i][1] = e['天氣'] * 1;
+      weather[i][2] = e.PM10 * 1;
     });
-  }
-}); //使用者打甚麼，LINE回什麼
+  });
+  timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+}
 
 const linebotParser = bot.parser();
 app.post('/', linebotParser); //路徑
