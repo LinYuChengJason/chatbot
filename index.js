@@ -3,26 +3,35 @@ var mongodb = require('mongodb'); //¨Ï¥Î¼Ò²Õmongodb
 var linebot = require('linebot'); //¨Ï¥Î¼Ò²Õlinebot
 var getJSON = require('get-json'); //¨Ï¥Î¼Ò²Õget-json
 
-var app = express(); //«Ø¥ßexpress¹êÅé¡A±Nexpressªì©l¤Æ¡A¥hNEW¤@­Óexpress¡AÅÜ¼Æapp¤~¬O­«ÂI¡C
-var timer; //©w¸q®É¶¡
-var weather = []; //©w¸q¤Ñ®ð¬°¯x°}
-
-_getJSON(); //©I¥s¨ç¦¡
-
-_bot(); //©I¥s¨ç¦¡
-
 var bot = linebot({
   "channelId": "1511016044",
   "channelSecret": "614a1dc79eaefd4ca0c37263634be761",
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
-}); // ³s±µline
+}); 
+
+var timer; //©w¸q®É¶¡
+var weather = []; //©w¸q¤Ñ®ð¬°¯x°}
+_getJSON(); //©I¥s¨ç¦¡
+
+_bot(); //©I¥s¨ç¦¡
+
+// ³s±µline
+var app = express(); //«Ø¥ßexpress¹êÅé¡A±Nexpressªì©l¤Æ¡A¥hNEW¤@­Óexpress¡AÅÜ¼Æapp¤~¬O­«ÂI¡C
+const linebotParser = bot.parser();
+app.post('/', linebotParser); //¸ô®|
+
+
+app.listen(process.env.PORT || 5000);
+console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
+
+
 
 function _bot() {
 bot.on('message', function(event) {
   if (event.message.type == 'text') {
     var msg = event.message.text;
 	var replyMsg = '';
-	if (msg.indexOf('weather') != -1) {
+	if (msg.indexOf('¤Ñ®ð') != -1) {
         weather.forEach(function(e, i) {
           if (msg.indexOf(e[0]) != -1) {
             replyMsg = e[0] + 'ªº¤Ñ®ð¬° ' + e[1];
@@ -33,7 +42,7 @@ bot.on('message', function(event) {
         }
       }
       if (replyMsg == ''){
-        replyMsg = '¤£ª¾¹D¡u'+msg+'¡v¬O¤°»ò·N«ä :p';
+        replyMsg = '¤£ª¾¹D¡u'+msg+'¡v¬O¤°»ò·N«ä';
 	  }
       event.reply(replyMsg).then(function(data) {
         console.log(replyMsg);
@@ -51,14 +60,12 @@ function _getJSON() {
       weather[i] = [];
       weather[i][0] = e.SiteName;
       weather[i][1] = e['¤Ñ®ð'] * 1;
-      weather[i][2] = e.PM10 * 1;
+     // weather[i][2] = e.PM10 * 1;
     });
   });
   timer = setInterval(_getJSON, 1800000); //¨C¥b¤p®É§ì¨ú¤@¦¸·s¸ê®Æ
 }
 
-const linebotParser = bot.parser();
-app.post('/', linebotParser); //¸ô®|
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //±NMongoDBªº¦ì¸m¦bServerµ{¦¡½X¤¤¥H¤@­ÓÅÜ¼ÆÀx¦s
@@ -85,10 +92,6 @@ app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡
 		}
    });
 });
-
-app.listen(process.env.PORT || 5000);
-console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
-
 
 
 
