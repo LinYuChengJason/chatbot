@@ -10,7 +10,8 @@ var bot = linebot({
 }); 
 
 var timer; //定義時間
-var pm = []; //定義天氣為矩陣
+var pm = []; //定義pm為矩陣
+var weather = []; //定義天氣為矩陣
 _getJSON(); //呼叫函式
 
 _bot(); //呼叫函式
@@ -25,7 +26,7 @@ app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
 
 
-
+//------------------------------------------------------------------空汙指數
 function _bot() {
   bot.on('message', function(event) {
     if (event.message.type == 'text') {
@@ -67,6 +68,52 @@ function _getJSON() {
   });
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
 }
+//------------------------------------------------------------------空汙指數
+//--------------------天氣
+function _bot() {
+  bot.on('message', function(event) {
+    if (event.message.type == 'text') {
+      var msg = event.message.text;
+      var replyMsg = '';
+      if (msg.indexOf('天氣') != -1) {
+        weather.forEach(function(e, i) {
+          if (msg.indexOf(e[0]) != -1) {
+            replyMsg = e[0] + '的天氣狀況為 ' + e[1];
+          }
+        });
+        if (replyMsg == '') {
+          replyMsg = '請輸入正確的地點';
+        }
+      }
+      if (replyMsg == '') {
+        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+      }
+
+      event.reply(replyMsg).then(function(data) {
+        console.log(replyMsg);
+      }).catch(function(error) {
+        console.log('error');
+      });
+    }
+  });
+
+} //回復空汙狀態
+
+function _getJSON() {
+  clearTimeout(timer);
+  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
+    response.forEach(function(e, i) {
+      weather[i] = [];
+      weather[i][0] = e.SiteName;
+      weather[i][1] = e['天氣'] * 1;
+    });
+  });
+  timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+}
+
+//------------------------------------------------------------------天氣
+
+
 
 
 var mongodbURL =
