@@ -21,6 +21,8 @@ var app = express(); //建立express實體，將express初始化，去NEW一個e
 const linebotParser = bot.parser();
 app.post('/', linebotParser); //路徑
 
+app.post('/weather', linebotParser); //路徑
+
 
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
