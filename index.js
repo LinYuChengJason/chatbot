@@ -104,8 +104,8 @@ function _getJSON() {
   getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response2) {
     response2.forEach(function(e, i) {
       weather[i] = [];
-      weather[i][3] = e.SiteName;
-      weather[i][4] = e['天氣'] * 1;
+      weather[i][0] = e.SiteName;
+      weather[i][1] = e['天氣'] * 1;
     });
   });
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
