@@ -52,6 +52,32 @@ function _bot() {
         console.log('error');
       });
     }
+	
+	
+	
+	if (event.message.type == 'text') {
+      var msg2 = event.message.text;
+      var replyMsg2 = '';
+      if (msg2.indexOf('天氣') != -1) {
+        weather.forEach(function(e, i) {
+          if (msg2.indexOf(e[0]) != -1) {
+            replyMsg2 = e[0] + '的天氣狀況為 ' + e[1];
+          }
+        });
+        if (replyMsg2 == '') {
+          replyMsg2 = '請輸入正確的地點';
+        }
+      }
+
+
+      event.reply(replyMsg2).then(function(data) {
+        console.log(replyMsg2);
+      }).catch(function(error) {
+        console.log('error');
+      });
+    }
+	
+	
   });
 
 } //回復空汙狀態
@@ -66,10 +92,21 @@ function _getJSON() {
       pm[i][2] = e.PM10 * 1;
     });
   });
+  
+    getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
+    response.forEach(function(e, i) {
+      weather[i] = [];
+      weather[i][0] = e.SiteName;
+      weather[i][1] = e['天氣'] * 1;
+    });
+  });
+  
+  
+  
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
 }
 //------------------------------------------------------------------空汙指數
-//--------------------天氣
+/*--------------------天氣
 function _bot() {
   bot.on('message', function(event) {
     if (event.message.type == 'text') {
@@ -109,7 +146,7 @@ function _getJSON() {
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
 }
 
-//------------------------------------------------------------------天氣
+//------------------------------------------------------------------天氣*/
 
 
 
