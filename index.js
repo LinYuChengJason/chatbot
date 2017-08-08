@@ -10,7 +10,7 @@ var bot = linebot({
 }); 
 
 var timer; //定義時間
-var weather = []; //定義天氣為矩陣
+var pm = []; //定義天氣為矩陣
 _getJSON(); //呼叫函式
 
 _bot(); //呼叫函式
@@ -27,23 +27,24 @@ console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。
 
 
 function _bot() {
-bot.on('message', function(event) {
-  if (event.message.type == 'text') {
-    var msg = event.message.text;
-	var replyMsg = '';
-	if (msg.indexOf('天氣') != -1) {
-        weather.forEach(function(e, i) {
+  bot.on('message', function(event) {
+    if (event.message.type == 'text') {
+      var msg = event.message.text;
+      var replyMsg = '';
+      if (msg.indexOf('PM2.5') != -1) {
+        pm.forEach(function(e, i) {
           if (msg.indexOf(e[0]) != -1) {
-            replyMsg = e[0] + '的天氣為 ' + e[1];
+            replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
           }
         });
-		if (replyMsg == '') {
+        if (replyMsg == '') {
           replyMsg = '請輸入正確的地點';
         }
       }
-      if (replyMsg == ''){
-        replyMsg = '不知道「'+msg+'」是什麼意思';
-	  }
+      if (replyMsg == '') {
+        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+      }
+
       event.reply(replyMsg).then(function(data) {
         console.log(replyMsg);
       }).catch(function(error) {
@@ -51,16 +52,17 @@ bot.on('message', function(event) {
       });
     }
   });
-} //回復天氣狀態
+
+} //回復空汙狀態
 
 function _getJSON() {
   clearTimeout(timer);
-  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
+  getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
     response.forEach(function(e, i) {
-      weather[i] = [];
-      weather[i][0] = e.SiteName;
-      weather[i][1] = e['天氣'] * 1;
-     // weather[i][2] = e.PM10 * 1;
+      pm[i] = [];
+      pm[i][0] = e.SiteName;
+      pm[i][1] = e['PM2.5'] * 1;
+      pm[i][2] = e.PM10 * 1;
     });
   });
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
