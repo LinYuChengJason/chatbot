@@ -77,8 +77,8 @@ function _bot() {
       var replyMsg = '';
       if (msg.indexOf('天氣') != -1) {
         weather.forEach(function(e, i) {
-          if (msg.indexOf(e[0]) != -1) {
-            replyMsg = e[0] + '的天氣狀況為 ' + e[1];
+          if (msg.indexOf(e[3]) != -1) {
+            replyMsg = e[3] + '的天氣狀況為 ' + e[4];
           }
         });
         if (replyMsg == '') {
@@ -97,15 +97,15 @@ function _bot() {
     }
   });
 
-} //回復空汙狀態
+} 
 
 function _getJSON() {
   clearTimeout(timer);
   getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
     response.forEach(function(e, i) {
       weather[i] = [];
-      weather[i][0] = e.SiteName;
-      weather[i][1] = e['天氣'] * 1;
+      weather[i][3] = e.SiteName;
+      weather[i][4] = e['天氣'] * 1;
     });
   });
   timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
