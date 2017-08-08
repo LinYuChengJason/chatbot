@@ -85,9 +85,7 @@ function _bot() {
           replyMsg2 = '請輸入正確的地點';
         }
       }
-      if (replyMsg2 == '') {
-        replyMsg2 = '不知道「'+msg2+'」是什麼意思 :p';
-      }
+
 
       event.reply(replyMsg2).then(function(data) {
         console.log(replyMsg2);
@@ -101,8 +99,8 @@ function _bot() {
 
 function _getJSON() {
   clearTimeout(timer);
-  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response2) {
-    response2.forEach(function(e, i) {
+  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
+    response.forEach(function(e, i) {
       weather[i] = [];
       weather[i][0] = e.SiteName;
       weather[i][1] = e['天氣'] * 1;
