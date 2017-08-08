@@ -1,7 +1,7 @@
-var express = require('express'); //require¬°¨Ï¥Î¨º¨Ç¼Ò²Õ
-var mongodb = require('mongodb'); //¨Ï¥Î¼Ò²Õmongodb
-var linebot = require('linebot'); //¨Ï¥Î¼Ò²Õlinebot
-var getJSON = require('get-json'); //¨Ï¥Î¼Ò²Õget-json
+var express = require('express'); //requireç‚ºä½¿ç”¨é‚£äº›æ¨¡çµ„
+var mongodb = require('mongodb'); //ä½¿ç”¨æ¨¡çµ„mongodb
+var linebot = require('linebot'); //ä½¿ç”¨æ¨¡çµ„linebot
+var getJSON = require('get-json'); //ä½¿ç”¨æ¨¡çµ„get-json
 
 var bot = linebot({
   "channelId": "1511016044",
@@ -9,20 +9,20 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); 
 
-var timer; //©w¸q®É¶¡
-var pm = []; //©w¸q¤Ñ®ğ¬°¯x°}
-_getJSON(); //©I¥s¨ç¦¡
+var timer; //å®šç¾©æ™‚é–“
+var pm = []; //å®šç¾©å¤©æ°£ç‚ºçŸ©é™£
+_getJSON(); //å‘¼å«å‡½å¼
 
-_bot(); //©I¥s¨ç¦¡
+_bot(); //å‘¼å«å‡½å¼
 
-// ³s±µline
-var app = express(); //«Ø¥ßexpress¹êÅé¡A±Nexpressªì©l¤Æ¡A¥hNEW¤@­Óexpress¡AÅÜ¼Æapp¤~¬O­«ÂI¡C
+// é€£æ¥line
+var app = express(); //å»ºç«‹expresså¯¦é«”ï¼Œå°‡expressåˆå§‹åŒ–ï¼Œå»NEWä¸€å€‹expressï¼Œè®Šæ•¸appæ‰æ˜¯é‡é»ã€‚
 const linebotParser = bot.parser();
-app.post('/', linebotParser); //¸ô®|
+app.post('/', linebotParser); //è·¯å¾‘
 
 
 app.listen(process.env.PORT || 5000);
-console.log('port ' + (process.env.PORT || 5000)); //±Ò°Ê¦øªA¾¹¡A²âÅ¥port 5000¡C¹w³]¬°80port¡A©Ò¥H¦h¥b³Q§O¤H¦û¨«¡CIP:127.0.0.1:5000¡Adomain:http://localhost:5000
+console.log('port ' + (process.env.PORT || 5000)); //å•Ÿå‹•ä¼ºæœå™¨ï¼Œè†è½port 5000ã€‚é è¨­ç‚º80portï¼Œæ‰€ä»¥å¤šåŠè¢«åˆ¥äººä½”èµ°ã€‚IP:127.0.0.1:5000ï¼Œdomain:http://localhost:5000
 
 
 
@@ -34,15 +34,15 @@ function _bot() {
       if (msg.indexOf('PM2.5') != -1) {
         pm.forEach(function(e, i) {
           if (msg.indexOf(e[0]) != -1) {
-            replyMsg = e[0] + 'ªº PM2.5 ¼Æ­È¬° ' + e[1];
+            replyMsg = e[0] + 'çš„ PM2.5 æ•¸å€¼ç‚º ' + e[1];
           }
         });
         if (replyMsg == '') {
-          replyMsg = '½Ğ¿é¤J¥¿½Tªº¦aÂI';
+          replyMsg = 'è«‹è¼¸å…¥æ­£ç¢ºçš„åœ°é»';
         }
       }
       if (replyMsg == '') {
-        replyMsg = '¤£ª¾¹D¡u'+msg+'¡v¬O¤°»ò·N«ä :p';
+        replyMsg = 'ä¸çŸ¥é“ã€Œ'+msg+'ã€æ˜¯ä»€éº¼æ„æ€ :p';
       }
 
       event.reply(replyMsg).then(function(data) {
@@ -53,7 +53,7 @@ function _bot() {
     }
   });
 
-} //¦^´_ªÅ¦¾ª¬ºA
+} //å›å¾©ç©ºæ±™ç‹€æ…‹
 
 function _getJSON() {
   clearTimeout(timer);
@@ -65,30 +65,30 @@ function _getJSON() {
       pm[i][2] = e.PM10 * 1;
     });
   });
-  timer = setInterval(_getJSON, 1800000); //¨C¥b¤p®É§ì¨ú¤@¦¸·s¸ê®Æ
+  timer = setInterval(_getJSON, 1800000); //æ¯åŠå°æ™‚æŠ“å–ä¸€æ¬¡æ–°è³‡æ–™
 }
 
 
 var mongodbURL =
-'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //±NMongoDBªº¦ì¸m¦bServerµ{¦¡½X¤¤¥H¤@­ÓÅÜ¼ÆÀx¦s
+'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //å°‡MongoDBçš„ä½ç½®åœ¨Serverç¨‹å¼ç¢¼ä¸­ä»¥ä¸€å€‹è®Šæ•¸å„²å­˜
 
-var myDB; //«Ø¥ß¤@­Ó¥ş°ìÅÜ¼ÆmyDB
-mongodb.MongoClient.connect(mongodbURL, function(err, db){ //¨Ï¥Îmongodb.MongoClientªº¤èªkconnect()¶i¦æ³s½u
-	if(err){                                               //¨Æ¥óºÊÅ¥¾¹¥Î¦b«D¦P¨Bµ{¦¡½X¡A¤£½T©w¦ó®É·|¥Î¨ì
-		console.log(err);                                  //­Y¦^¶Çªº°Ñ¼Æ¦³error¡A¥Îconsole.log()¦L¥X¿ù»~¤º®e
+var myDB; //å»ºç«‹ä¸€å€‹å…¨åŸŸè®Šæ•¸myDB
+mongodb.MongoClient.connect(mongodbURL, function(err, db){ //ä½¿ç”¨mongodb.MongoClientçš„æ–¹æ³•connect()é€²è¡Œé€£ç·š
+	if(err){                                               //äº‹ä»¶ç›£è½å™¨ç”¨åœ¨éåŒæ­¥ç¨‹å¼ç¢¼ï¼Œä¸ç¢ºå®šä½•æ™‚æœƒç”¨åˆ°
+		console.log(err);                                  //è‹¥å›å‚³çš„åƒæ•¸æœ‰errorï¼Œç”¨console.log()å°å‡ºéŒ¯èª¤å…§å®¹
 	} else{
-		myDB = db;                                         //¦bmongoDB¦¨¥\³s½u«á¡A¯d¦ídbª«¥ó
-		console.log('connection success');                 //­Y¨S¦³¿ù»~ªí¥Ü³s½u¦¨¥\¡A¦L¥Xconnection success
+		myDB = db;                                         //åœ¨mongoDBæˆåŠŸé€£ç·šå¾Œï¼Œç•™ä½dbç‰©ä»¶
+		console.log('connection success');                 //è‹¥æ²’æœ‰éŒ¯èª¤è¡¨ç¤ºé€£ç·šæˆåŠŸï¼Œå°å‡ºconnection success
 	}
 });
 
-app.get('/api/test', function(request, response){ //³s±µ¨ì/api/test¤~·|°µªº¨Æ±¡¡Arequest±a¦³³s±µ¶i¨Óªº¸ê°T(°Ñ¼Æ)¡Aresponse¬°¦^¶Çªº¤º®e¡C
-	var collection = myDB.collection('data'); //¨Ï¥ÎmyDBªº¤èªkcollection('data')¨ú±odata³o­Ócollection
-	collection.find({}).toArray(function(err, docs){ //¨Ï¥Îcollectionªº¤èªkfind()¨ú±o¸ê®Æªí¤ºªº¤º®e¡A{}ªí¥Ü¨ú±o¥ş³¡¤º®e
-		if(err){                                     //¨Ï¥ÎtoArray()±N¸ê®ÆÂà¦¨°}¦C¡Afunctionªºdocs¬OÂà¦¨°}¦C«áªºµ²ªG
-			response.status(406).end();              //Âà°}¦C¹Lµ{­Y¦³err¡A¦^¶Çµ¹¿ù»~½X406¡A¦¹¬°Http¨ó©wª¬ºA½X      
-		} else{                                      //.end()¬°±N¸ê®Æ¦^¶Çµ¹¨Ï¥ÎªÌ
-			response.type('application/json');       //¨S¦³¿ù»~¦^¶Çª¬ºA½X200¨Ãªş±aµÛ¸ê®Æ¡A¦]¬°MongoDB¦sªº¸ê®Æ´N¬OJSON¡A©Ò¥H¤£¥Î¯S§OÂà´«
+app.get('/api/test', function(request, response){ //é€£æ¥åˆ°/api/testæ‰æœƒåšçš„äº‹æƒ…ï¼Œrequestå¸¶æœ‰é€£æ¥é€²ä¾†çš„è³‡è¨Š(åƒæ•¸)ï¼Œresponseç‚ºå›å‚³çš„å…§å®¹ã€‚
+	var collection = myDB.collection('data'); //ä½¿ç”¨myDBçš„æ–¹æ³•collection('data')å–å¾—dataé€™å€‹collection
+	collection.find({}).toArray(function(err, docs){ //ä½¿ç”¨collectionçš„æ–¹æ³•find()å–å¾—è³‡æ–™è¡¨å…§çš„å…§å®¹ï¼Œ{}è¡¨ç¤ºå–å¾—å…¨éƒ¨å…§å®¹
+		if(err){                                     //ä½¿ç”¨toArray()å°‡è³‡æ–™è½‰æˆé™£åˆ—ï¼Œfunctionçš„docsæ˜¯è½‰æˆé™£åˆ—å¾Œçš„çµæœ
+			response.status(406).end();              //è½‰é™£åˆ—éç¨‹è‹¥æœ‰errï¼Œå›å‚³çµ¦éŒ¯èª¤ç¢¼406ï¼Œæ­¤ç‚ºHttpå”å®šç‹€æ…‹ç¢¼      
+		} else{                                      //.end()ç‚ºå°‡è³‡æ–™å›å‚³çµ¦ä½¿ç”¨è€…
+			response.type('application/json');       //æ²’æœ‰éŒ¯èª¤å›å‚³ç‹€æ…‹ç¢¼200ä¸¦é™„å¸¶è‘—è³‡æ–™ï¼Œå› ç‚ºMongoDBå­˜çš„è³‡æ–™å°±æ˜¯JSONï¼Œæ‰€ä»¥ä¸ç”¨ç‰¹åˆ¥è½‰æ›
 			response.status(200).send(docs);
 			response.end();
 		}
