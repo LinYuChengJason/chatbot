@@ -73,24 +73,24 @@ function _getJSON() {
 function _bot() {
   bot.on('message', function(event) {
     if (event.message.type == 'text') {
-      var msg = event.message.text;
-      var replyMsg = '';
-      if (msg.indexOf('天氣') != -1) {
+      var msg2 = event.message.text;
+      var replyMsg2 = '';
+      if (msg2.indexOf('天氣') != -1) {
         weather.forEach(function(e, i) {
-          if (msg.indexOf(e[3]) != -1) {
-            replyMsg = e[3] + '的天氣狀況為 ' + e[4];
+          if (msg2.indexOf(e[0]) != -1) {
+            replyMsg2 = e[0] + '的天氣狀況為 ' + e[1];
           }
         });
-        if (replyMsg == '') {
-          replyMsg = '請輸入正確的地點';
+        if (replyMsg2 == '') {
+          replyMsg2 = '請輸入正確的地點';
         }
       }
-      if (replyMsg == '') {
-        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+      if (replyMsg2 == '') {
+        replyMsg2 = '不知道「'+msg2+'」是什麼意思 :p';
       }
 
-      event.reply(replyMsg).then(function(data) {
-        console.log(replyMsg);
+      event.reply(replyMsg2).then(function(data) {
+        console.log(replyMsg2);
       }).catch(function(error) {
         console.log('error');
       });
@@ -101,8 +101,8 @@ function _bot() {
 
 function _getJSON() {
   clearTimeout(timer);
-  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response) {
-    response.forEach(function(e, i) {
+  getJSON('http://opendata.epa.gov.tw/ws/Data/ATM00698/?$format=json', function(error, response2) {
+    response2.forEach(function(e, i) {
       weather[i] = [];
       weather[i][3] = e.SiteName;
       weather[i][4] = e['天氣'] * 1;
