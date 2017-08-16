@@ -1,76 +1,29 @@
 var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
-var getJSON = require('get-json'); //使用模組get-json
+var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 var bot = linebot({
   "channelId": "1511016044",
   "channelSecret": "614a1dc79eaefd4ca0c37263634be761",
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
-}); 
+}); // 連接line
 
-var timer; //定義時間
-var pm = []; //定義pm為矩陣
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    var msg = event.message.text;
+    event.reply(msg).then(function(data) {
+      // success 
+      console.log(msg);
+    }).catch(function(error) {
+      // error 
+      console.log('error');
+    });
+  }
+}); //使用者打甚麼，LINE回什麼
 
-_getJSON(); //呼叫函式
-
-_bot(); //呼叫函式
-
-// 連接line
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 const linebotParser = bot.parser();
 app.post('/', linebotParser); //路徑
-
-app.listen(process.env.PORT || 5000);
-console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
-
-
-//------------------------------------------------------------------空汙指數
-function _bot() {
-  bot.on('message', function(event) {
-    if (event.message.type == 'text') {
-      var msg = event.message.text;
-      var replyMsg = '';
-      if (msg.indexOf('PM2.5') != -1) {
-        pm.forEach(function(e, i) {
-          if (msg.indexOf(e[0]) != -1) {
-            replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
-          }
-        });
-        if (replyMsg == '') {
-          replyMsg = '請輸入正確的地點';
-        }
-      }
-      if (replyMsg == '') {
-        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
-      }
-
-      event.reply(replyMsg).then(function(data) {
-        console.log(replyMsg);
-      }).catch(function(error) {
-        console.log('error');
-      });
-    }	
-	
-  });
-
-} //回復空汙狀態
-
-function _getJSON() {
-  clearTimeout(timer);
-  getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
-    response.forEach(function(e, i) {
-      pm[i] = [];
-      pm[i][0] = e.SiteName;
-      pm[i][1] = e['PM2.5'] * 1;
-      pm[i][2] = e.PM10 * 1;
-    });
-  });
- 
-  
-  timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
-}
-//------------------------------------------------------------------空汙指數
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
@@ -97,6 +50,9 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
 		}
    });
 });
+
+app.listen(process.env.PORT || 5000);
+console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
 
 
 
