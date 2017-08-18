@@ -13,13 +13,13 @@ app.post('/', function(request, response){
 	bot.on('message', function(request) {
   if (request.message.type = 'text') {
       response= request.message.text;
-    request.reply(response).then(function(data) {
-      // success 
-      console.log(response);
-    }).catch(function(error) {
-      // error 
-      console.log('error');
-    });
+	  if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
+			response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
+		} else{                                      //.end()為將資料回傳給使用者
+			response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
+			response.status(200).send(docs);
+			response.end();
+		}
   }
 })
 }); //使用者打甚麼，LINE回什麼
