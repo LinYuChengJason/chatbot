@@ -1,6 +1,7 @@
 var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
+
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 var bot = linebot({
@@ -9,19 +10,21 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
-app.post('/', function(request, response){
-	bot.on('message', function(request) {
-  if (request.message.type = 'text') {
-      response= request.message.text;
-	  if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
-			response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
-		} else{                                      //.end()為將資料回傳給使用者
-			response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
-			response.status(200).send(docs);
-			response.end();
-		}
+const linebotParser = bot.parser();
+
+app.post('/', linebotParser); //路徑
+
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    var msg = event.message.text;
+    event.reply(msg).then(function(data) {
+      // success 
+      console.log(msg);
+    }).catch(function(error) {
+      // error 
+      console.log('error');
+    });
   }
-})
 }); //使用者打甚麼，LINE回什麼
 
 var mongodbURL =
@@ -37,7 +40,7 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
 	}
 });
 
-app.post('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.get('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 	var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
 	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
 		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
@@ -52,7 +55,6 @@ app.post('/api/test', function(request, response){ //連接到/api/test才會做
 
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
-
 
 
 
