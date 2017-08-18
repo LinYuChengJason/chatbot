@@ -9,21 +9,20 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
-bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
-    event.reply(msg).then(function(data) {
+app.post('/', function(request, response){
+	bot.on('message', function(request) {
+  if (request.message.type = 'text') {
+      response= request.message.text;
+    request.reply(response).then(function(data) {
       // success 
-      console.log(msg);
+      console.log(response);
     }).catch(function(error) {
       // error 
       console.log('error');
     });
   }
+})
 }); //使用者打甚麼，LINE回什麼
-
-const linebotParser = bot.parser();
-app.post('/', linebotParser); //路徑
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
@@ -38,7 +37,7 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
 	}
 });
 
-app.get('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.post('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 	var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
 	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
 		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
