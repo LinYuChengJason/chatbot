@@ -10,10 +10,6 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
-const linebotParser = bot.parser();
-
-app.post('/', linebotParser); //路徑
-
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
@@ -26,6 +22,10 @@ bot.on('message', function(event) {
     });
   }
 }); //使用者打甚麼，LINE回什麼
+
+const linebotParser = bot.parser();
+
+app.post('/', linebotParser); //路徑
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
