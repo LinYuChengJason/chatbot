@@ -10,7 +10,7 @@ var bot = linebot({
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
-bot.on('message', function(event) {
+/*bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
     event.reply(msg).then(function(data) {
@@ -21,7 +21,7 @@ bot.on('message', function(event) {
       console.log('error');
     });
   }
-}); //使用者打甚麼，LINE回什麼
+}); */ //使用者打甚麼，LINE回什麼
 
 const linebotParser = bot.parser();
 
