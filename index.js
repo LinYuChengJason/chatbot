@@ -53,42 +53,40 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
    });
 });
 
-var http = require('http');
-// var apiai = require("../module/apiai");
-var apiai = require("apiai")
+var apiai = require("apiai");
 
 var api = apiai("6fde14984d7c4f4d821aa8bf92c3c989");
 
-var server = http.createServer(function(request, response) {
-    if (request.method = 'POST' && request.url == '/upload') {
-        // var outStream = fs.createWriteStream('qwe.wav');
-        var voiceRequest = api.voiceRequest();
+var options = {
+    sessionId: '<UNIQE SESSION ID>'
+};
 
-        voiceRequest.on('response', function(_response) {
-            response.end(JSON.stringify(_response));
-            // var json = JSON.stringify({'resolvedQuery': _response['result']['resolvedQuery']})
-            // response.end(json);
-        });
+var request = api.getContextsRequest(options);
 
-        voiceRequest.on('error', function(error) {
-            console.log(error);
-            response.end();
-        });
-
-        request.on('data', function(chunk) {
-            voiceRequest.write(chunk);
-        });
-
-        request.on('end', function() {
-            voiceRequest.end();
-        });
-    } else {
-        response.writeHead(code, {});
-        response.end();
-    }
-
-    console.log(request.headers);
+request.on('response', function(response) {
+    // response = [
+    // { name: "contextName" }
+    // ]
+    console.log(response);
 });
+
+request.on('error', function(error) {
+    console.log(error);
+});
+
+request.end();
+
+var requestSingle = app.getContextsRequest(options, 'contextName');
+
+requestSingle.on('response', function(response) {
+    console.log(response);
+});
+
+requestSingle.on('error', function(error) {
+    console.log(error);
+});
+
+request.end();
 
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
