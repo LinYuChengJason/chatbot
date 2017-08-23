@@ -55,9 +55,9 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
 
 var apiai = require("apiai");
 
-var api = apiai("6fde14984d7c4f4d821aa8bf92c3c989");
+var app = apiai("6fde14984d7c4f4d821aa8bf92c3c989");
 
-var request = api.textRequest('Hello');
+var request = app.textRequest('Hello');
 
 request.on('response', function(response) {
     console.log(response);
