@@ -53,21 +53,6 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
    });
 });
 
-var apiai = require("apiai");
-
-var app = apiai("6fde14984d7c4f4d821aa8bf92c3c989");
-
-var request = app.textRequest('Hello');
-
-request.on('response', function(response) {
-    console.log(response);
-});
-
-request.on('error', function(error) {
-    console.log(error);
-});
-
-request.end();
 
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
