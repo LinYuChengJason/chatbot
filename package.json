@@ -7,8 +7,6 @@
 "mongodb" : "*",
 "linebot" : "*",
 "debug" : "*",
-"get-json" : "*",
-"http" : "*",
 "apiai" : "*"
 }
 }

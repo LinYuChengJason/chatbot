@@ -4,7 +4,7 @@ var linebot = require('linebot'); //使用模組linebot
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*var bot = linebot({
+var bot = linebot({
   "channelId": "1511016044",
   "channelSecret": "614a1dc79eaefd4ca0c37263634be761",
   "channelAccessToken": "TYdm9aLp06Z+QIsCrCTPGPGrt8XrNx2QpWJFI4z+FbTuhxV2/nucvHZo7+kkdPlY1EowYjAd1CSDu8sqRL3G0VJl1ks1MRhogtDDITHyz6E4qSL9GMfkyexOCdrZIRLR/gobgmdQEFQvm473Yu0m0QdB04t89/1O/w1cDnyilFU="
@@ -52,44 +52,6 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
 		}
    });
 });
-
-var http = require('http');
-// var apiai = require("../module/apiai");
-var apiai = require("apiai")
-
-var api = apiai("6fde14984d7c4f4d821aa8bf92c3c989");
-
-var server = http.createServer(function(request, response) {
-    if (request.method = 'POST' && request.url == '/upload') {
-        // var outStream = fs.createWriteStream('qwe.wav');
-        var voiceRequest = api.voiceRequest();
-
-        voiceRequest.on('response', function(_response) {
-            response.end(JSON.stringify(_response));
-            // var json = JSON.stringify({'resolvedQuery': _response['result']['resolvedQuery']})
-            // response.end(json);
-        });
-
-        voiceRequest.on('error', function(error) {
-            console.log(error);
-            response.end();
-        });
-
-        request.on('data', function(chunk) {
-            voiceRequest.write(chunk);
-        });
-
-        request.on('end', function() {
-            voiceRequest.end();
-        });
-    } else {
-        response.writeHead(code, {});
-        response.end();
-    }
-
-    console.log(request.headers);
-});
-
 
 app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
