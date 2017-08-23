@@ -25,7 +25,7 @@ bot.on('message', function(event) {
 
 const linebotParser = bot.parser();
 
-app.post('/', linebotParser); */ //路徑
+app.post('/', linebotParser);  //路徑
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
