@@ -5,7 +5,7 @@ var apiai = require('apiai');
 
 var api = apiai("a9506448ab034f67891345a9c6370509");
 
-var request = api.textRequest(text, {
+var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
  
