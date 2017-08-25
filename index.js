@@ -3,7 +3,7 @@ var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
 var apiai = require('apiai');
 
-var app = apiai("a9506448ab034f67891345a9c6370509");
+var api = apiai("a9506448ab034f67891345a9c6370509");
 
 var request = app.textRequest(text, {
     sessionId: 'Jason'
@@ -19,7 +19,7 @@ request.on('error', function(error) {
  
 request.end();
 
-/* var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 /*var bot = linebot({
   "channelId": "1531669581",
