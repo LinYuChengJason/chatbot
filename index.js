@@ -8,16 +8,12 @@ const apiai = require('apiai');
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 app.get('/', function(request, response){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
-	const api = apiai('96499911855b40b29cc7908eca2ed768');
+	const api = apiai("96499911855b40b29cc7908eca2ed768");
 	let text ='weather';
 	let r = api.textRequest(text,{
-		sessionId: 'Jason'
+		sessionId: 'aa'
 	});
-	r.on('', function() {
-		let qq='aa';
-		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
-		response.status(200).send(qq); // 200為http通訊協定 表示連線成功
-	});
+	
 	r.on('response', function(response) {
 		let q='aa';
 		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
