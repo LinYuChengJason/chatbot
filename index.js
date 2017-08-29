@@ -13,7 +13,11 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 	let r = api.textRequest(text,{
 		sessionId: 'Jason'
 	});
-	 
+	r.on('', function() {
+		let qq='aa';
+		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
+		response.status(200).send(qq); // 200為http通訊協定 表示連線成功
+	});
 	r.on('response', function(response) {
 		let q='aa';
 		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
