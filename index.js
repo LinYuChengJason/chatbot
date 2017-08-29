@@ -4,9 +4,9 @@ var linebot = require('linebot'); //使用模組linebot
 var apiai = require('apiai');
 
 var api = apiai("a9506448ab034f67891345a9c6370509");
-
-var request = api.textRequest('天氣', {
-    sessionId: 'Jason'
+console.log("HELLO");
+var request = api.textRequest("天氣", {
+    sessionId: "Jason"
 });
  
 request.on('response', function(response) {
