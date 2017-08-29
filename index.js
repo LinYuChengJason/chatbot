@@ -7,34 +7,34 @@ var apiai = require('apiai');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*app.get('/', function(request, response){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
+app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
 	var api = apiai("96499911855b40b29cc7908eca2ed768");
-	var text ='weather';
-	var r = api.textRequest(text,{
+	var text ='weather-question';
+	var req = api.textRequest(text,{
 		sessionId: 'Jason'
 	});
 	
-	r.on('response', function(response) {
+	req.on('response', function(response) {
 		var q='aa';
 		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
-		response.status(200).send(q); // 200為http通訊協定 表示連線成功
+		res.status(200).send(q); // 200為http通訊協定 表示連線成功
 	});
 	 
-	r.on('Error', function(error) {
+	req.on('error', function(error) {
 		var a='bb';
-		response.status(200).send(error); // 200為http通訊協定 表示連線成功
-		response.status(200).send(a); // 200為http通訊協定 表示連線成功
+		res.status(200).send(error); // 200為http通訊協定 表示連線成功
+		res.status(200).send(a); // 200為http通訊協定 表示連線成功
 		
 	});
-	//response.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
+	res.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
 	//response.status(200).send('fuck you'); // 200為http通訊協定 表示連線成功
 	
-	r.end();
-	response.end(); //end為回傳給使用者	
+	req.end();
+	res.end(); //end為回傳給使用者	
 	
 		
 	});
-*/
+
 
 var bot = linebot({
   "channelId": "1531669581",
