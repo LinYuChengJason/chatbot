@@ -1,32 +1,37 @@
 var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
-var apiai = require('apiai');
-console.log("HELLO");
+const apiai = require('apiai');
+
 
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 app.get('/', function(request, response){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
-	var api = apiai("a9506448ab034f67891345a9c6370509");
-
-	var r = api.textRequest('天氣', {
+	const api = apiai('a9506448ab034f67891345a9c6370509');
+	let text ='天氣';
+	let r = api.textRequest(text,{
 		sessionId: 'Jason'
 	});
 	 
 	r.on('response', function(response) {
-		response.status(200).send(response); // 200為http通訊協定 表示連線成功
-			
+		let q='aa';
+		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
+		response.status(200).send(q); // 200為http通訊協定 表示連線成功
 	});
 	 
 	r.on('error', function(error) {
+		let a='bb';
 		response.status(200).send(error); // 200為http通訊協定 表示連線成功
+		response.status(200).send(a); // 200為http通訊協定 表示連線成功
 		
 	});
 	//response.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
-	response.status(200).send('you'); // 200為http通訊協定 表示連線成功
-	response.end(); //end為回傳給使用者	
+	//response.status(200).send('fuck you'); // 200為http通訊協定 表示連線成功
+	
 	r.end();
+	response.end(); //end為回傳給使用者	
+	
 		
 	});
 
