@@ -21,7 +21,7 @@ request.end();
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*var bot = linebot({
+var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
@@ -42,7 +42,7 @@ bot.on('message', function(event) {
 
 const linebotParser = bot.parser();
 
-app.post('/', linebotParser);*/  //路徑
+app.post('/', linebotParser);  //路徑
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
