@@ -15,16 +15,18 @@ var q = "HELLO";
 	});
 	 
 	request.on('response', function(response) {
-		q=response;
+		response.status(200).send(response); // 200為http通訊協定 表示連線成功
+			
 	});
 	 
 	request.on('error', function(error) {
-		q=error;
+		response.status(200).send(error); // 200為http通訊協定 表示連線成功
+		
 	});
-	 
+	response.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
+	response.end(); //end為回傳給使用者	
 	request.end();
-		response.status(200).send(q); // 200為http通訊協定 表示連線成功
-		response.end(); //end為回傳給使用者
+		
 	});
 
 
