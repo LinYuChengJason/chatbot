@@ -11,7 +11,7 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 	var api = apiai("96499911855b40b29cc7908eca2ed768");
 	var text ='weather';
 	var r = api.textRequest(text,{
-		sessionId: 'aa'
+		sessionId: 'Jason'
 	});
 	response.status(200).send(r); 
 	r.on('response', function(response) {
@@ -20,7 +20,7 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 		response.status(200).send(q); // 200為http通訊協定 表示連線成功
 	});
 	 
-	r.on('error', function(error) {
+	r.on('Error', function(error) {
 		var a='bb';
 		response.status(200).send(error); // 200為http通訊協定 表示連線成功
 		response.status(200).send(a); // 200為http通訊協定 表示連線成功
