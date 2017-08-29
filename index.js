@@ -5,7 +5,7 @@ var apiai = require('apiai');
 
 var api = apiai("a9506448ab034f67891345a9c6370509");
 
-var request = api.textRequest('天氣', {
+/*var request = api.textRequest('天氣', {
     sessionId: 'Jason'
 });
  
@@ -17,7 +17,7 @@ request.on('error', function(error) {
     console.log(error);
 });
  
-request.end();
+request.end();*/
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
@@ -27,7 +27,7 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line
 
-/*bot.on('message', function(event) {
+bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
     event.reply(msg).then(function(data) {
