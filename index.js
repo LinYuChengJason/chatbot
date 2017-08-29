@@ -7,8 +7,14 @@ console.log("HELLO");
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
+app.get('/', function(request, response){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
+	response.status(200).send('<html><body><H1>Hello World</H1></body></html>'); // 200為http通訊協定 表示連線成功
+	response.end(); //end為回傳給使用者
+});
+
 var api = apiai("a9506448ab034f67891345a9c6370509");
-console.log("HELLO");
+
+
 var request = api.textRequest("天氣", {
     sessionId: "Jason"
 });
