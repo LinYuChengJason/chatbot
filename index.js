@@ -13,10 +13,11 @@ app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪
 	var req = api.textRequest(text,{
 		sessionId: 'Jason'
 	});
-	
+	res.status(200).send(response);
+	res.status(200).send(error);
 	req.on('response', function(response) {
 		var q='aa';
-		//response.status(200).send(response); // 200為http通訊協定 表示連線成功
+		//res.status(200).send(response); // 200為http通訊協定 表示連線成功
 		res.status(200).send(q); // 200為http通訊協定 表示連線成功
 	});
 	 
@@ -27,7 +28,7 @@ app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪
 		
 	});
 	res.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
-	//response.status(200).send('fuck you'); // 200為http通訊協定 表示連線成功
+	//res.status(200).send('fuck you'); // 200為http通訊協定 表示連線成功
 	
 	req.end();
 	res.end(); //end為回傳給使用者	
