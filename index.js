@@ -26,8 +26,6 @@ function sendMessage(event) {
 
   apiai.end();
 }
-}
-)
 
 
 var bot = linebot({
