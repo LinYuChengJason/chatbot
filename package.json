@@ -3,10 +3,9 @@
 "version" : "0.0.1", 
 "private" : true, 
 "dependencies" : { 
-"express" : "*", 
+"express" : "*",
+"body-parser": "*", 
 "mongodb" : "*",
-"linebot" : "*",
-"debug" : "*",
 "apiai" : "*",
 "request" : "*"
 }
