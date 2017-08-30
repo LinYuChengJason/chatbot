@@ -11,7 +11,7 @@ var options = {
     sessionId: 'Jason'
 };
 
-var request = app.getContextsRequest(options);
+var request = api.getContextsRequest(options);
 
 request.on('response', function(response) {
     // response = [
@@ -26,7 +26,7 @@ request.on('error', function(error) {
 
 request.end();
 
-var requestSingle = app.getContextsRequest(options, 'contextName');
+var requestSingle = api.getContextsRequest(options, 'contextName');
 
 requestSingle.on('response', function(response) {
     console.log(response);
