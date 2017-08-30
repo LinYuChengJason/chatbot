@@ -39,7 +39,7 @@ requestSingle.on('error', function(error) {
 
 request.end(); */
 
-app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
+/*app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
 	var api = apiai("96499911855b40b29cc7908eca2ed768");
 	var text ='weather-question';
 	var req = api.textRequest(text,{
@@ -64,7 +64,7 @@ app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪
 	req.end();
 	res.end(); //end為回傳給使用者	
 	
-	});
+	});*/
 
 var bot = linebot({
   "channelId": "1531669581",
