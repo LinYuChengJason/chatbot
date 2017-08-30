@@ -11,49 +11,46 @@ app.listen(process.env.PORT || 5000);
 console.log('port ' + (process.env.PORT || 5000)); //啟動伺服器，聆聽port 5000。預設為80port，所以多半被別人佔走。IP:127.0.0.1:5000，domain:http://localhost:5000
 
 /* For Facebook Validation */
-app.get('/webhook/', function (req, res) {
-  if (req.query['hub.verify_token'] === '<validation_token>') {
-    res.send(req.query['hub.challenge']);
+app.get('/webhook', (req, res) => {
+  if (req.query['hub.mode'] && req.query['hub.verify_token'] === 'Jason') {
+    res.status(200).send(req.query['hub.challenge']);
+  } else {
+    res.status(403).end();
   }
-  res.send('Error, wrong validation token');
-})
-
-/* Handling all messenges */
-app.post('/webhook/', function (req, res) {
-  messaging_events = req.body.entry[0].messaging; //所有訊息
-
-  for (i = 0; i < messaging_events.length; i++) { // 遍歷毎一則
-
-    event = req.body.entry[0].messaging[i]; 
-    sender = event.sender.id; // 誰發的訊息
-
-    if (event.message && event.message.text) {
-      text = event.message.text;
-      // Handle a text message from this sender
-    }
-  }
-  res.sendStatus(200);
 });
 
-var token = "<EAAEMiM9fx78BALmSHF7syWxZAry34fNNnBSKKbyXoWuzpS6ZAbhHG7ZAxhn4WZAdTqH5QXkpDyFnKF21nuXtZB44ulmGpcB9aIbkaA4vPQpamdgM7CUfPRERHDZAcg8CdfZCkCYTQ2ZBVhDZBKU7rvqf6BJcx9ZCQalFXpxxc7c0Wott1EmGYOb53n>";
-
-function sendTextMessage(sender, text) {
-  messageData = {
-    text:text
+/* Handling all messenges */
+app.post('/webhook', (req, res) => {
+  console.log(req.body);
+  if (req.body.object === 'page') {
+    req.body.entry.forEach((entry) => {
+      entry.messaging.forEach((event) => {
+        if (event.message && event.message.text) {
+          sendMessage(event);
+        }
+      });
+    });
+    res.status(200).end();
   }
+});
+
+function sendMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
+
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
+    qs: {access_token: EAAEMiM9fx78BAOS3qgJd4Xvlcj9ijZAAefTWUrwHYE59xvH4UNpnBZBhZCJZAUfHSIM8skn6FkHJa5b2EyjJmvY22nAT6XTYf464mPl9L5CUAwMuP46rbCyykxzZBxN9ZCfOHkkoKBsoGVNzrLh8EoKhfJWZAxZCLPrkXz9WSF5dgyjfGiOvmb9P},
     method: 'POST',
     json: {
-      recipient: {id:sender},
-      message: messageData,
+      recipient: {id: sender},
+      message: {text: text}
     }
-  }, function(error, response, body) {
+  }, function (error, response) {
     if (error) {
-      console.log('Error sending message: ', error);
+        console.log('Error sending message: ', error);
     } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+        console.log('Error: ', response.body.error);
     }
   });
 }
