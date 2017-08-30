@@ -64,8 +64,7 @@ app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪
 	req.end();
 	res.end(); //end為回傳給使用者	
 	
-		
-	});*/
+	});
 
 var bot = linebot({
   "channelId": "1531669581",
