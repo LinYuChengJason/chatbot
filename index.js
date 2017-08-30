@@ -2,6 +2,7 @@ var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); //使用模組linebot
 var apiai = require('apiai');
+var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
@@ -36,9 +37,9 @@ requestSingle.on('error', function(error) {
     console.log(error);
 });
 
-request.end();
+request.end(); */
 
-/*app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
+app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
 	var api = apiai("96499911855b40b29cc7908eca2ed768");
 	var text ='weather-question';
 	var req = api.textRequest(text,{
