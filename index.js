@@ -6,67 +6,31 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-app.get('/', function(request, res){
-var api = apiai("96499911855b40b29cc7908eca2ed768");
 
-var options = {
-    sessionId: 'Jason'
-};
+app.get('/api/test', function(request, response){
+var apiaiAPP = apiai('96499911855b40b29cc7908eca2ed768');
 
-var request = api.getContextsRequest(options);
+function sendMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
 
-request.on('response', function(response) {
-    // response = [
-    // { name: "contextName" }
-    // ]
-    console.log(response);
-});
+  let apiai = apiaiApp.textRequest(text, {
+    sessionId: 'Jason' // use any arbitrary id
+  });
 
-request.on('error', function(error) {
+  apiai.on('response', (response) => {
+    // Got a response from api.ai. Let's POST to Facebook Messenger
+  });
+
+  apiai.on('error', (error) => {
     console.log(error);
-});
+  });
 
-request.end();
+  apiai.end();
+}
+}
+)
 
-var requestSingle = api.getContextsRequest(options, 'contextName');
-
-requestSingle.on('response', function(response) {
-    console.log(response);
-});
-
-requestSingle.on('error', function(error) {
-    console.log(error);
-});
-
-request.end(); 
-})
-
-/*app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
-	var api = apiai("96499911855b40b29cc7908eca2ed768");
-	var text ='weather-question';
-	var req = api.textRequest(text,{
-		sessionId: 'Jason'
-	});
-	
-	req.on('response', function(response) {
-		var q='aa';
-		//res.status(200).send(response); // 200為http通訊協定 表示連線成功
-		res.status(200).send(q); // 200為http通訊協定 表示連線成功
-	});
-	 
-	req.on('error', function(error) {
-		var a='bb';
-		res.status(200).send(error); // 200為http通訊協定 表示連線成功
-		res.status(200).send(a); // 200為http通訊協定 表示連線成功
-		
-	});
-	res.status(200).send('fuck'); // 200為http通訊協定 表示連線成功
-	//res.status(200).send('fuck you'); // 200為http通訊協定 表示連線成功
-	
-	req.end();
-	res.end(); //end為回傳給使用者	
-	
-	});*/
 
 /*var bot = linebot({
   "channelId": "1531669581",
