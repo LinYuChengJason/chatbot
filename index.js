@@ -6,7 +6,7 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*var api = apiai("96499911855b40b29cc7908eca2ed768");
+var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 var options = {
     sessionId: 'Jason'
@@ -37,7 +37,7 @@ requestSingle.on('error', function(error) {
     console.log(error);
 });
 
-request.end(); */
+request.end(); 
 
 /*app.get('/', function(request, res){ //app.get就是幫你做路由(分辨做哪種事情，類似事件監聽器 ex:新增資料、查詢資料、刪除資料、修改資料)。
 	var api = apiai("96499911855b40b29cc7908eca2ed768");
