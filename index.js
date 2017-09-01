@@ -6,7 +6,7 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-var api = apiai("96499911855b40b29cc7908eca2ed768");
+/*var api = apiai("96499911855b40b29cc7908eca2ed768");
  
 var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -20,14 +20,14 @@ request.on('error', function(error) {
     console.log(error);
 });
  
-request.end();
+request.end();*/
 
 
 var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-}); // 連接line
+}); // 連接line，驗證
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
@@ -59,7 +59,7 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
 	}
 });
 
-app.get('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 	var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
 	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
 		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
