@@ -43,8 +43,8 @@ app.post('/webhook', function (req, res) {
 	console.log(req.body);
 	var result = {
 	"speech": "",
-    "source": "",
-    "displayText": "晴天 action: apiai-webhook-sample"
+    "source": "weather",
+    "displayText": ""
 	}
 	res.send(result);
 }
