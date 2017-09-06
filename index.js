@@ -35,7 +35,7 @@ bot.on('message', function(event) {
 });
 
 var linebotParser = bot.parser();
-app.get('/', linebotParser);
+app.post('/', linebotParser);
 
 /*bot.on('message', function(event) {
   if (event.message.type = 'text') {
