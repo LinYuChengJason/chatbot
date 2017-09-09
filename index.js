@@ -21,7 +21,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-    event.reply(msg).then(function(data) {
+    event.reply(text).then(function(data) {
       // success 
       console.log(msg);
     }).catch(function(error) {
@@ -37,7 +37,7 @@ app.post('/', linebotParser);  //路徑
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
-var request = api.textRequest(msg, {
+var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
  
