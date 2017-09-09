@@ -30,16 +30,23 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-bot.on('message', function (event) {
-    event.reply(event.message.text).then(function (data) {
-        // success 
-    }).catch(function (error) {
-        // error 
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+    var msg = event.message.text;
+    event.reply(msg).then(function(data) {
+      // success 
+      console.log(msg);
+    }).catch(function(error) {
+      // error 
+      console.log('error');
     });
-});
+  }
+});  //使用者打甚麼，LINE回什麼
 
 var linebotParser = bot.parser();
-app.post('/', linebotParser);
+
+app.post('/', linebotParser);  //路徑 
+
 
 app.use(bodyParser.json());
 
@@ -53,23 +60,6 @@ app.post('/webhook', function (req, res) {
 	res.send(result);
 }
 )	
-
-/*bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
-    event.reply(msg).then(function(data) {
-      // success 
-      console.log(msg);
-    }).catch(function(error) {
-      // error 
-      console.log('error');
-    });
-  }
-});  //使用者打甚麼，LINE回什麼
-
-const linebotParser = bot.parser();
-
-app.post('/', linebotParser);  //路徑 */
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
