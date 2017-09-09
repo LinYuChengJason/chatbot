@@ -19,9 +19,9 @@ var bot = linebot({
 }); // 連接line，驗證
 
 
-var linebotParser = bot.parser();
+//var linebotParser = bot.parser();
 
-app.post('/', linebotParser);  //路徑 
+//app.post('/', linebotParser);  //路徑 
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
@@ -42,9 +42,9 @@ request.end();
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = event.message.text;
+   // var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
+    event.reply(response).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(response);
     }).catch(function(error) {
