@@ -24,7 +24,7 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
+      console.log(response);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
@@ -36,15 +36,15 @@ var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
-app.post('/api', function(req, res){
+app.post('/api', function(request, response){
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
 var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
  
-request.on('response', function(msg) {
-    console.log(msg);
+request.on('response', function(response) {
+    console.log(response);
 });
  
 request.on('error', function(error) {
