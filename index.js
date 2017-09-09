@@ -1,9 +1,9 @@
-var express = require('express'); //require為使用模組
-var bodyParser = require('body-parser');
-var mongodb = require('mongodb'); //使用模組mongodb
-var linebot = require('linebot'); 
-var apiai = require('apiai');
-var request = require('request');
+const express = require('express'); //require為使用模組
+const bodyParser = require('body-parser');
+const mongodb = require('mongodb'); //使用模組mongodb
+const linebot = require('linebot'); 
+const apiai = require('apiai');
+const request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
@@ -49,6 +49,16 @@ app.post('/webhook', function (req, res) {
 	res.send(result);
 }
 )
+
+app.post('/opendata', function (req.res){
+  var epaAPI = "http://opendata.epa.gov.tw/ws/Data/UV/?$orderby=PublishAgency&$skip=0&$top=1000&format=json";
+  $.getJSON( epaAPI, function(){
+    format: "json"
+  }).done(function(data) {
+    	console.log(data);
+    });
+})
+	
 
 /*bot.on('message', function(event) {
   if (event.message.type = 'text') {
