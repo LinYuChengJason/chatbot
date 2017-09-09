@@ -12,13 +12,15 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
 
-var bot = linebot({
+
+
+app.post('/', function(request, response){
+	var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-app.post('/', function(request, response){
 	bot.on('message', function(request) {
   if (request.message.type = 'text') {
     var response = request.message.text;
