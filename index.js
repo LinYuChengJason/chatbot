@@ -38,19 +38,21 @@ app.post('/', linebotParser);  //路徑
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
-var request = api.textRequest('text', {
+ var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
  
-request.on('response', function(response) {
+app.post('/api', function(request, response){
+	request.on('response', function(response) {
     console.log(response);
 });
- 
+
 request.on('error', function(error) {
     console.log(error);
 })
  
 request.end();
+});
 
 /*app.post('/webhook', (req, res){
         var return = res.json({
