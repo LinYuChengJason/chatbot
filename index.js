@@ -48,17 +48,7 @@ app.post('/webhook', function (req, res) {
 	}
 	res.send(result);
 }
-)
-
-app.post('/opendata', function (req.res){
-  var epaAPI = "http://opendata.epa.gov.tw/ws/Data/UV/?$orderby=PublishAgency&$skip=0&$top=1000&format=json";
-  $.getJSON( epaAPI, function(){
-    format: "json"
-  }).done(function(data) {
-    	console.log(data);
-    });
-})
-	
+)	
 
 /*bot.on('message', function(event) {
   if (event.message.type = 'text') {
