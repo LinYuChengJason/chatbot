@@ -7,22 +7,10 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*var api = apiai("96499911855b40b29cc7908eca2ed768");
- 
-var request = api.textRequest('text', {
-    sessionId: 'Jason'
-});
- 
-request.on('response', function(response) {
-    console.log(response);
-});
- 
-request.on('error', function(error) {
-    console.log(error);
-});
- 
-request.end();*/
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+	extended: true 
+}));
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -41,25 +29,49 @@ bot.on('message', function(event) {
       console.log('error');
     });
   }
-});  //使用者打甚麼，LINE回什麼
+}); //說一樣的話
 
 var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
+var api = apiai("96499911855b40b29cc7908eca2ed768");
+ 
+var request = api.textRequest('text', {
+    sessionId: 'Jason'
+});
+ 
+request.on('response', function(response) {
+    console.log(response);
+});
+ 
+request.on('error', function(error) {
+    console.log(error);
+});
+ 
+request.end();
 
-app.use(bodyParser.json());
+app.post('/webhook', (req, res){
+  if (req.body.result.action === 'weather') {
+    var city = req.body.result.parameters['taiwan-city'];
+    var restUrl = 'http://api.openweathermap.org/data/2.5/weather?APPID='+WEATHER_API_KEY+'&q='+city;
 
-app.post('/webhook', function (req, res) {
-	console.log(req.body);
-	var result = {
-	"speech": "",
-    "source": "weather",
-    "displayText": ""
-	}
-	res.send(result);
-}
-)	
+    request.get(restUrl, (err, response, body) => {
+      if (!err && response.statusCode == 200) {
+        let json = JSON.parse(body);
+        let msg = json.weather[0].description + ' and the temperature is ' + json.main.temp + ' ℉';
+        return res.json({
+          speech: msg,
+          displayText: msg,
+          source: 'weather'});
+      } else {
+        return res.status(400).json({
+          status: {
+            code: 400,
+            errorType: 'I failed to look up the city name.'}});
+      }})
+  }
+})
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
