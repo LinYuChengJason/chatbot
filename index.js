@@ -7,10 +7,10 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-app.use(bodyParser.json());
+/*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
-}));
+}));*/
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -21,15 +21,16 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
+  //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
-      // success 
+      // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
-      // error 
-      console.log('error');
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
     });
   }
-}); //說一樣的話
+});
 
 var linebotParser = bot.parser();
 
