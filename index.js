@@ -36,7 +36,6 @@ var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
-/*app.post('/api', function(request, response){
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
 var request = api.textRequest('text', {
