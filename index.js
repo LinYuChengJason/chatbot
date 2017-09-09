@@ -21,7 +21,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-    event.reply(text).then(function(data) {
+    event.reply(msg).then(function(data) {
       // success 
       console.log(msg);
     }).catch(function(error) {
@@ -31,7 +31,7 @@ bot.on('message', function(event) {
   }
 }); //說一樣的話
 
-var linebotParser = bot.parser();
+/*var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
