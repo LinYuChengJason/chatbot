@@ -1,9 +1,9 @@
-const express = require('express'); //require為使用模組
-const bodyParser = require('body-parser');
-const mongodb = require('mongodb'); //使用模組mongodb
-const linebot = require('linebot'); 
-const apiai = require('apiai');
-const request = require('request');
+var express = require('express'); //require為使用模組
+var bodyParser = require('body-parser');
+var mongodb = require('mongodb'); //使用模組mongodb
+var linebot = require('linebot'); 
+var apiai = require('apiai');
+var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
