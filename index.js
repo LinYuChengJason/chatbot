@@ -51,12 +51,13 @@ request.on('error', function(error) {
  
 request.end();
 
-app.post('/webhook', (req, res){
+/*app.post('/webhook', (req, res){
         return res.json({
           speech: msgs,
           displayText: msgs,
           source: 'weather'});
-		  console.log(return);
+		  
+		  console.log(return);*/
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
