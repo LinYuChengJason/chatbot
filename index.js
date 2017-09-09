@@ -52,26 +52,11 @@ request.on('error', function(error) {
 request.end();
 
 app.post('/webhook', (req, res){
-  if (req.body.result.action === 'weather') {
-    var city = req.body.result.parameters['taiwan-city'];
-    var restUrl = 'http://api.openweathermap.org/data/2.5/weather?APPID='+WEATHER_API_KEY+'&q='+city;
-
-    request.get(restUrl, (err, response, body) => {
-      if (!err && response.statusCode == 200) {
-        let json = JSON.parse(body);
-        let msg = json.weather[0].description + ' and the temperature is ' + json.main.temp + ' ℉';
         return res.json({
-          speech: msg,
-          displayText: msg,
+          speech: msgs,
+          displayText: msgs,
           source: 'weather'});
-      } else {
-        return res.status(400).json({
-          status: {
-            code: 400,
-            errorType: 'I failed to look up the city name.'}});
-      }})
-  }
-})
+		  console.log(return);
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
