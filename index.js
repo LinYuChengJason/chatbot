@@ -1,16 +1,16 @@
 var express = require('express'); //require為使用模組
 var bodyParser = require('body-parser');
-var mongodb = require('mongodb'); //使用模組mongodb
 var linebot = require('linebot'); 
+var mongodb = require('mongodb'); //使用模組mongodb
 var apiai = require('apiai');
 var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-/*app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
-}));*/
+}));
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -36,7 +36,7 @@ var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
-/*var api = apiai("96499911855b40b29cc7908eca2ed768");
+var api = apiai("96499911855b40b29cc7908eca2ed768");
  
 var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -53,12 +53,13 @@ request.on('error', function(error) {
 request.end();
 
 /*app.post('/webhook', (req, res){
-        return res.json({
-          speech: msgs,
-          displayText: msgs,
+        var return = res.json({
+          speech: msg,
+          displayText: msg,
           source: 'weather'});
 		  
-		  console.log(return);*/
+		  console.log(return)
+});*/
 
 var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
