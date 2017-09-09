@@ -39,7 +39,7 @@ bot.on('message', function (event) {
 });
 
 var linebotParser = bot.parser();
-app.post('/linewebhook', linebotParser);
+app.post('/', linebotParser);
 
 app.use(bodyParser.json());
 
