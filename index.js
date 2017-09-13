@@ -36,7 +36,7 @@ var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
-var api = apiai("96499911855b40b29cc7908eca2ed768");
+/*var api = apiai("96499911855b40b29cc7908eca2ed768");
  
  var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -50,11 +50,12 @@ request.on('error', function(error) {
     console.log(error);
 })
  
-request.end();
+request.end();*/
 
 
 app.post('/webhook', function(req, res) {
-       return res.json({
+    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+    return res.json({
         speech: speech,
         displayText: speech,
         source: 'weather'
