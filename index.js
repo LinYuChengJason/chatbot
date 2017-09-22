@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
 
-var bot = linebot({
+/*var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-}); // 連接line，驗證
+}); // 連接line，驗證*/
 
 /*bot.on('message', function(event) {
   if (event.message.type = 'text') {
@@ -32,12 +32,12 @@ var bot = linebot({
   }
 });*/
 
-bot.on('message', function(event) {
+/*bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
-});
+});*/
 
-var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 
+/*var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 */
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
