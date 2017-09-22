@@ -20,7 +20,6 @@ var bot = linebot({
 
 const linebotParser = bot.parser();
 app.post('/', linebotParser);
-console.log(good);
 
 /*bot.on('message', function(event) {
   if (event.message.type = 'text') {
