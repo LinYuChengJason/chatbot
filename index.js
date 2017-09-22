@@ -18,11 +18,11 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-/*bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
+bot.on('message', function(response) {
+  if (response.message.type = 'text') {
+    var msg = response.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
+    response.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
     }).catch(function(error) {
@@ -30,11 +30,11 @@ var bot = linebot({
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }
-});*/
-
-bot.on('message', function(response) {
-  console.log(response); //把收到訊息的 event 印出來看看
 });
+
+/*bot.on('message', function(event) {
+  console.log(event); //把收到訊息的 event 印出來看看
+});*/
 
 var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
