@@ -18,10 +18,7 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-const linebotParser = bot.parser();
-app.post('/', linebotParser);
-
-/*bot.on('message', function(event) {
+bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
@@ -37,7 +34,7 @@ app.post('/', linebotParser);
 
 var linebotParser = bot.parser();
 
-app.post('/', linebotParser);  //路徑 */
+app.post('/', linebotParser);  //路徑 
 
 /*var api = apiai("96499911855b40b29cc7908eca2ed768");
  
