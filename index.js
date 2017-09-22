@@ -32,12 +32,12 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
   }
 });*/
 
-/*bot.on('message', function(event) {
+bot.on('request', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看
-});*/
+});
 
-/*var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 */
+var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
