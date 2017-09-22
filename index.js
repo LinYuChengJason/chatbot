@@ -18,7 +18,7 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-bot.on('message', function(event) {
+/*bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
@@ -30,17 +30,16 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }
-});
-
-/*bot.on('message', function(event) {
-  console.log(event); //把收到訊息的 event 印出來看看
 });*/
 
-var linebotParser = bot.parser();
+bot.on('message', function(event) {
+  console.log(event); //把收到訊息的 event 印出來看看
+});
 
+var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
 
-/*var api = apiai("96499911855b40b29cc7908eca2ed768");
+var api = apiai("96499911855b40b29cc7908eca2ed768");
  
  var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -54,7 +53,7 @@ request.on('error', function(error) {
     console.log(error);
 })
  
-request.end();*/
+request.end();
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
