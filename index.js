@@ -32,8 +32,8 @@ var bot = linebot({
   }
 });*/
 
-bot.on('request', function(event) {
-  console.log(event); //把收到訊息的 event 印出來看看
+bot.on('message', function(response) {
+  console.log(response); //把收到訊息的 event 印出來看看
 });
 
 var linebotParser = bot.parser();
