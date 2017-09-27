@@ -45,7 +45,7 @@ var options = {
     sessionId: 'Jason'
 }
 
-var request = aoi.textRequest('Hello', options);
+var request = api.textRequest('Hello', options);
 
 request.on('response', function(response) {
     console.log(response);
