@@ -20,11 +20,11 @@ var bot = linebot({
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = event.message.text;
+    var msg = ress;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(response);
+      console.log(msg);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
@@ -46,6 +46,10 @@ var api = apiai("96499911855b40b29cc7908eca2ed768");
 });
 
 request.on('response', function(response) {
+	var ress = response.result.fulfillment.speech;
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.write(ress);
+    // res.end(ress);
     console.log(response);
 });
 
