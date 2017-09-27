@@ -20,7 +20,7 @@ var bot = linebot({
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
-    var msg = ress;
+    var msg = event.message.text;
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
@@ -41,16 +41,11 @@ app.post('/', linebotParser);  //路徑
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
- var request = api.textRequest('text', {
-    sessionId: 'Jason'
-});
-
-request.on('response', function(response) {
-	var ress = response.result.fulfillment.speech;
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    res.write(ress);
-    // res.end(ress);
-    console.log(response);
+var request = api.intentsRequest({method: "GET", intentId: Weather});
+request.on('response', function(intentData) {
+      intentData.userSays.push({data: [{ text: "i want you to learn to speak chinese" }]});
+      var putRequest = app.intentsRequest({method: "PUT", intentId: Weather, intent: intentData});
+      putRequest.end();
 });
 
 request.on('error', function(error) {
