@@ -41,11 +41,12 @@ app.post('/', linebotParser);  //路徑
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
-var request = api.intentsRequest({method: "GET", intentId: Weather});
-request.on('response', function(intentData) {
-      intentData.userSays.push({data: [{ text: "i want you to learn to speak chinese" }]});
-      var putRequest = app.intentsRequest({method: "PUT", intentId: Weather, intent: intentData});
-      putRequest.end();
+ var request = api.textRequest('text', {
+    sessionId: 'Jason'
+});
+
+request.on('response', function(response) {
+    console.log(response);
 });
 
 request.on('error', function(error) {
