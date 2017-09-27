@@ -41,9 +41,11 @@ app.post('/', linebotParser);  //路徑
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
- var request = api.textRequest('text', {
+var options = {
     sessionId: 'Jason'
-});
+}
+
+var request = aoi.textRequest('Hello', options);
 
 request.on('response', function(response) {
     console.log(response);
