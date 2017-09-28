@@ -23,7 +23,7 @@ app.get('/webhook', (req, res) => {
 });
 
 /* Handling all messenges */
-app.post('/webhook', (req, res) => {
+app.post('/webhook1', (req, res) => {
   console.log(req.body);
   if (req.body.object === 'page') {
     req.body.entry.forEach((entry) => {
