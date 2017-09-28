@@ -7,8 +7,8 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-app.use(bodyParser.json());
-/*app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+/*app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true 
 }));*/
 
@@ -51,14 +51,14 @@ request.on('error', function(error) {
  
 request.end();
 
-app.post('/webhook', function(req, res) {
+/*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
         speech: speech,
         displayText: speech,
         source: 'weather'
     });
-});
+});*/
 
 /*var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
