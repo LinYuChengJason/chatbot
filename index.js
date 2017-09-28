@@ -41,7 +41,7 @@ function sendMessage(event) {
 
   request({
     url: 'https://graph.facebook.com/v2.10/me/messages',
-    qs: {access_token: EAAEMiM9fx78BAKBDkde3YZCshZCQWKTrkgE47pqovfckczch9zqMZC4RYyZC7vqOJZCHNp9SiVTnmTrMcMwacZCkXaIKLMwTbgBsCyGct6a5QObnY8ZAVGPkndhSJCmErd25g5c4k8yoODq2OgPOyi3yUW53gnmGrxK7zdB5Qd8xgwDSuAMZCvTZB},
+    qs: {access_token: EAAEMiM9fx78BALwcf1RrsN5rvUjV64408tJD7US14yL5TQVsRs9d9P5kQ0NUzobQfKuMfnyGEgfZCCmCYYrKviHuRGX9C63vwSvjifkuZCWW8z2VRsX2YNbG9ZAZCfKNlPUY4grrXuopuNybay7nlj5yrqIKZB7FSQoJ8VHZCHF49c8dyaVvpJ},
     method: 'POST',
     json: {
       recipient: {id: sender},
