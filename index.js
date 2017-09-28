@@ -32,14 +32,10 @@ bot.on('message', function(event) {
   }
 });
 
-/*bot.on('message', function(event) {
-  console.log(event); //把收到訊息的 event 印出來看看
-});*/
-
 var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
 
-var api = apiai("96499911855b40b29cc7908eca2ed768");
+/*var api = apiai("96499911855b40b29cc7908eca2ed768");
  
  var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -53,7 +49,7 @@ request.on('error', function(error) {
     console.log(error);
 })
  
-request.end();
+request.end();*/
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
@@ -63,7 +59,8 @@ request.end();
         source: 'weather'
     });
 });*/
-var mongodbURL =
+
+/*var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
 
 var myDB; //建立一個全域變數myDB
@@ -87,7 +84,7 @@ app.get('/database', function(request, response){ //連接到/database才會做�
 			response.end();
 		}
    });
-});
+});*/
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
