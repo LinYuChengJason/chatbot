@@ -35,7 +35,7 @@ app.post('/webhook', (req, res) => {
   }
 });
 
-/*function sendMessage(event) {
+function sendMessage(event) {
   let sender = event.sender.id;
   let text = event.message.text;
 
@@ -54,7 +54,7 @@ app.post('/webhook', (req, res) => {
         console.log('Error: ', response.body.error);
     }
   });
-}*/
+}
 
 
 
