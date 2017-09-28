@@ -1,16 +1,14 @@
-var express = require('express'); //require為使用那些模組
-var bodyParser = require('body-parser');
-var request = require('request');
+const  express = require('express'); //require為使用那些模組
+const  bodyParser = require('body-parser');
+const  request = require('request');
 
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+const  app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
+const server = app.listen(process.env.PORT || 5000, () => {
+  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
 /* For Facebook Validation */
