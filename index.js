@@ -32,6 +32,29 @@ app.post('/webhook', (req, res) => {
   }
 });
 
+const request = require('request');
+
+function sendMessage(event) {
+  let sender = event.sender.id;
+  let text = event.message.text;
+
+  request({
+    url: 'https://graph.facebook.com/v2.10/me/messages',
+    qs: {access_token: EAAUnwZCLyuYIBAECfBau2txhCMb3wdQx52pjPrDYYV2bZAMtcaBQToWrPSlKUACXDU4IBChHndwylWbY6X7ScfviidRfea9JrbJZBrfRMVdosnC9ZB8U2cAf2FpHXFH4OZBg3pOfq37gdrF8KLVmJddvee6RNhqZC9meBlnWP8r6mwpmB4yZCYd},
+    method: 'POST',
+    json: {
+      recipient: {id: sender},
+      message: {text: text}
+    }
+  }, function (error, response) {
+    if (error) {
+        console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error);
+    }
+  });
+}
+
 
 
 
