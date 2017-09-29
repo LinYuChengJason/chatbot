@@ -6,7 +6,12 @@ var apiai = require('apiai');
 var request = require('request');
 
 var app = require('express')()
-const server = require('https').Server(app)
+
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
+
 let bot = LINEBot.create({
   channelID:'1531669581',
   channelSecret:'a990b2c5396e8e5c207db5e034d74711',
