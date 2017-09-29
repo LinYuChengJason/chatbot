@@ -1,100 +1,138 @@
 var express = require('express'); //require為使用模組
 var bodyParser = require('body-parser');
-var linebot = require('linebot'); 
 var mongodb = require('mongodb'); //使用模組mongodb
+var linebot = require('linebot');
 var apiai = require('apiai');
 var request = require('request');
 
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+var app = require('express')()
+const server = require('https').Server(app)
+let bot = LINEBot.create({
+  channelID:'1522726717',
+  channelSecret:'1d69960dcb17f09bb3bbd5caf820a1c5',
+  channelToken:'/0HWJ3EzlNXylQ3+tC3iDdHm95e+QOhpXKy0bYf49UknQ+qobarTauYCMku/0+xgkhPe6t2MYNnYl0/9KN8hxMdi1CEVuRSQTO9NvBSL9HSDK++01uu5o6SEchXL9fS4NKODAfuLcDCZGG07jse2iQdB04t89/1O/w1cDnyilFU='
+}, server)
 
-/*app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
-	extended: true 
-}));*/
+app.use(bot.webhook('/webhook'))
 
-var bot = linebot({
-  "channelId": "1531669581",
-  "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
-  "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-}); // 連接line，驗證
-
-bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
+  const googleMapsClient = require('@google/maps').createClient({ key:AIzaSyDVuqN1isHa_YtDklDQ2Lxxov4kSLq_-vI})
+  const payload = {
+    origins,
+    destinations,
+    units: 'metric',
+    language: 'zh-TW'
   }
-});
+  const GoogleMapPromise = new Promise((resolve, reject) => {
+    googleMapsClient.distanceMatrix(payload, (err, res) => {
+      if (!err) {
+        console.log('Google Distance Matrix Response', JSON.stringify(res.json))
+        const distanceMatrix = res.json.rows[0].elements 
+        // ...
 
-var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 
+        resolve(distanceMatrix)
+      }
+    })
+  })
+  
+  getShowtimes(home/).then((showtime) => {
+      let showtime_info = {}
+      let st = new Showtime()
+      st.cinema = cinema.cinemaName
+      st.theater = home/
+      try {
+        showtime_info = JSON.stringify(showtime)
+      } catch(err) {
+        console.log(`${home/} error: ${err}`)
+      }
+      st.showtime_info = showtime_info
+      st.save((err) => {
+        if(err) {
+          ErrorLogger(res, err.message, 'Failed to create new showtime.')
+          console.log(`Save theater${_home/} into DB Error`)
+        } else {
+          console.log(`[${home/}] save success`)
+        }
+      })
+  })
+  
+import Crawler from 'js-crawler'
+import Cheerio from 'cheerio'
+import _ from 'lodash'
+import Promise from 'promise'
 
-var api = apiai("96499911855b40b29cc7908eca2ed768");
- 
- var request = api.textRequest('text', {
-    sessionId: 'Jason'
-});
+var fs = require('fs'),
+    request = require('request'),
+    cheerio = require('cheerio');
 
-request.on('response', function(response) {
-    console.log(response);
-});
+var HOST = 'http://www.atmovies.com.tw/home/';
 
-request.on('error', function(error) {
-    console.log(error);
-})
- 
-request.end();
-
-/*app.post('/webhook', function(req, res) {
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
-    return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'weather'
+var getPage = function(url, callback, links) {
+    var links = links || []; 
+    request(url, function(err, res, body) {
+        if (!err && res.statusCode == 200) {
+            var lastPage;
+            var $ = cheerio.load(body); 
+			//得到全部 page 的 URL
+            $('div > div:nth-child(3) > div > ul > li > a').each(function(i, e) { 
+                links.push($(e).attr('href'));
+            });
+            callback(links);
+        }
     });
-});*/
+};
 
-/*var mongodbURL =
-'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
+//利用遞迴(recursion)的觀念
+var getArticle = function(links, callback, contents) {
+    contents = contents || [];
+    if (links.length === 0) {
+		//遞迴(recursion)結束
+        callback(contents);
+    }
+    request(HOST + links[0], function(err, res, body) {
+        if (!err && res.statusCode === 200) {
+            //console.log(body); 
+            var $ = cheerio.load(body);
+            $('article.box.post').each(function(i, e) {
+                movie = $(e).find('.filmTitle').text()
+                movie = movie.replace(/\s+/g, " "); // 移除 前後中 多餘的空格
+                //console.log("movie:" + movie);
+				
+                url = $(e).find('.filmTitle a').attr('href')
+                //console.log("url:" + url);
+				
+                descri = $(e).find('p').text()
+                //console.log("descri:" + descri);
+				
+                $('.openthis').remove(); // 移除 class openthis	，避免	infor 抓取到多於字串
+				//console.log($(e).html())
+				
+                infor = $(e).find('span.date').first().text()
+                infor = infor.replace(/\s+/g, " ");
+                //console.log("infor:" + infor);
+                //console.log("===========");
 
-var myDB; //建立一個全域變數myDB
-mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
-	if(err){                                               //事件監聽器用在非同步程式碼，不確定何時會用到
-		console.log(err);                                  //若回傳的參數有error，用console.log()印出錯誤內容
-	} else{
-		myDB = db;                                         //在mongoDB成功連線後，留住db物件
-		console.log('connection success');                 //若沒有錯誤表示連線成功，印出connection success
-	}
+                var article = {
+                    movie: movie,
+                    url: HOST + url,
+                    descri: descri,
+                    infor: infor
+                };
+                contents.push(article);
+            });
+            links = links.slice(1);
+            getArticle(links, callback, contents);
+        }
+    });
+};
+
+console.log("爬蟲開始......");
+getPage('http://www.atmovies.com.tw/movie/next/0/', function(links) {
+    getArticle(links, function(contents) {
+        fs.writeFile('movie_result.json', JSON.stringify(contents, null, '\t'), function(err) {
+            if (err) {
+                return console.error(err);
+            }
+			console.log("抓取結束");
+        });
+    });
 });
-
-app.get('/database', function(request, response){ //連接到/database才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
-	var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
-	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
-		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
-			response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
-		} else{                                      //.end()為將資料回傳給使用者
-			response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
-			response.status(200).send(docs);
-			response.end();
-		}
-   });
-});*/
-
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
-});
-
-
-
-
-
-
-
