@@ -30,8 +30,9 @@ bot.on('message', function(event) {
 });
 
 request.on('response', function(response) {
-	event.reply(response);
+	event.reply(response).then(function(data){
     console.log(response);
+	}
 });
 
 request.on('error', function(error) {
