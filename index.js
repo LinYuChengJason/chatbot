@@ -31,16 +31,7 @@ bot.on('message', function(event) {
 
 request.on('response', function(response) {
 	
-    console.log(response);
-});
-
-request.on('error', function(error) {
-    console.log(error);
-})
- 
-request.end();
-
-    event.reply(response).then(function(data) {
+	    event.reply(response).then(function(data) {
        // 傳送訊息成功時，可在此寫程式碼 
 	 
 	  
@@ -49,6 +40,27 @@ request.end();
        // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
+	
+    // console.log(response);
+});
+
+request.on('error', function(error) {
+	
+		    event.reply(msg).then(function(data) {
+       // 傳送訊息成功時，可在此寫程式碼 
+	 
+	  
+      // console.log(msg);
+    }).catch(function(error) {
+       // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+    console.log(error);
+})
+ 
+request.end();
+
+
   }
 });
 
