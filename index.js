@@ -24,20 +24,10 @@ bot.on('message', function(event) {
   //收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }
-});
-
-var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 
-
+	  
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
- var request = api.textRequest('text', {
+ var request = api.textRequest( msg, {
     sessionId: 'Jason'
 });
 
@@ -50,6 +40,17 @@ request.on('error', function(error) {
 })
  
 request.end();
+	  
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }
+});
+
+var linebotParser = bot.parser();
+app.post('/', linebotParser);  //路徑 
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
