@@ -26,12 +26,13 @@ bot.on('message', function(event) {
   var api = apiai("96499911855b40b29cc7908eca2ed768");
  
  var request = api.textRequest( msg, {
-    sessionId: 'Weather'
+    sessionId: '9e270f87-9a28-44e2-85e5-6416852dcd71'
 });
 
 request.on('response', function(response) {
 	
-	    event.reply(msg).then(function(data) {
+	
+	    event.reply(response['result']).then(function(data) {
        // 傳送訊息成功時，可在此寫程式碼 
 	 
 	  
@@ -46,15 +47,6 @@ request.on('response', function(response) {
 
 request.on('error', function(error) {
 	
-		    event.reply(msg).then(function(data) {
-       // 傳送訊息成功時，可在此寫程式碼 
-	 
-	  
-      // console.log(msg);
-    }).catch(function(error) {
-       // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
     console.log(error);
 })
  
