@@ -21,12 +21,12 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
+  //收到文字訊息存到msg裡
   
   var api = apiai("96499911855b40b29cc7908eca2ed768");
  
  var request = api.textRequest( '天氣如何', {
-    sessionId: 'Jason'
+    sessionId: 'Weather'
 });
 
 request.on('response', function(response) {
