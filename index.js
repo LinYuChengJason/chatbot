@@ -25,13 +25,13 @@ bot.on('message', function(event) {
   
   var api = apiai("96499911855b40b29cc7908eca2ed768");
  
- var request = api.textRequest( '天氣如何', {
+ var request = api.textRequest( msg, {
     sessionId: 'Weather'
 });
 
 request.on('response', function(response) {
 	
-	    event.reply(response).then(function(data) {
+	    event.reply(msg).then(function(data) {
        // 傳送訊息成功時，可在此寫程式碼 
 	 
 	  
