@@ -30,6 +30,7 @@ bot.on('message', function(event) {
 });
 
 request.on('response', function(response) {
+	event.reply(response);
     console.log(response);
 });
 
