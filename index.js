@@ -27,7 +27,7 @@ bot.on('message', function(event) {
 	  
 var api = apiai("96499911855b40b29cc7908eca2ed768");
  
- var request = api.textRequest( msg, {
+ var request = api.textRequest( '天氣如何', {
     sessionId: 'Jason'
 });
 
@@ -41,7 +41,7 @@ request.on('error', function(error) {
  
 request.end();
 	  
-      console.log(msg);
+     // console.log(msg);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
