@@ -40,7 +40,7 @@ request.on('error', function(error) {
  
 request.end();
 
-    event.reply('我覺得可以').then(function(data) {
+    event.reply(response).then(function(data) {
        // 傳送訊息成功時，可在此寫程式碼 
 	 
 	  
