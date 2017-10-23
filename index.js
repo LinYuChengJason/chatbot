@@ -38,10 +38,11 @@ bot.on('message', function(event) {
 
 var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
-	
-app.get('api' , function(request , response){	
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
+
+app.get('api' , function(request , response){	
+
 var text = message.text;
 var request = api.textRequest('text', {
     sessionId: 'Jason'
@@ -49,21 +50,25 @@ var request = api.textRequest('text', {
 	
 request.on('response', function(response) {
     console.log(response);
-});
+}); 
+
+response.status(200);
 
 request.on('error', function(error) {
     console.log(error);
 })
 
+response.status(406).end(); 
+
 request.end();
 
-if(err){                                    
+/*if(err){                                    
 			response.status(406).end();             
 		} else{                                      
-			response.type('application/json');       
+			response.type('application/json');      
 			response.status(200).send(docs);
 			response.end();
-		}
+		}*/
 })
 
 /*app.post('/webhook', function(req, res) {
