@@ -10,12 +10,6 @@ var getJSON = require('get-json');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
-});
-
 var timer;
 var pm = [];
 
@@ -166,6 +160,12 @@ app.get('/database', function(request, response){ //連接到/database才會做�
 			response.end();
 		}
    });
+});
+
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
 });
 
 
