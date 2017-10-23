@@ -39,8 +39,10 @@ bot.on('message', function(event) {
 var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
 	
+app.get('api' , function(request , response){	
+
 var api = apiai("96499911855b40b29cc7908eca2ed768");
-	
+var text = message.text;
 var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
@@ -54,6 +56,15 @@ request.on('error', function(error) {
 })
 
 request.end();
+
+if(err){                                    
+			response.status(406).end();             
+		} else{                                      
+			response.type('application/json');       
+			response.status(200).send(docs);
+			response.end();
+		}
+})
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
