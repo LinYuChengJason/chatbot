@@ -53,16 +53,7 @@ request.on('error', function(error) {
     console.log(error);
 })
 
-if(err){                                     
-			response.status(406).end();             
-		} else{                                     
-			response.type('application/json');       
-			response.status(200).send(docs);
-			response.end();
-		}
-
 request.end();
-});
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
