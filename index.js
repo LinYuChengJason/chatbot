@@ -38,20 +38,18 @@ bot.on('message', function(event) {
 
 var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
- 
-app.get('/api' , function(request , response){
 	
 var api = apiai("96499911855b40b29cc7908eca2ed768");
 	
-var apitext = api.textRequest('text', {
+var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
 	
-apitext.on('response', function(response) {
+request.on('response', function(response) {
     console.log(response);
 });
 
-apitext.on('error', function(error) {
+request.on('error', function(error) {
     console.log(error);
 })
 
