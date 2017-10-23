@@ -4,8 +4,16 @@ var linebot = require('linebot');
 var mongodb = require('mongodb'); //使用模組mongodb
 var apiai = require('apiai');
 var request = require('request');
+var cheerio = require("cheerio");
+var getJSON = require('get-json');
+
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+
+var timer;
+var pm = [];
+
+_japan();
 
 /*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -18,19 +26,72 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-    var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
+function _bot() {
+  bot.on('message', function(event) {
+    if (event.message.type == 'text') {
+      var msg = event.message.text;
+      var replyMsg = '';
+      if (msg.indexOf('PM2.5') != -1) {
+        pm.forEach(function(e, i) {
+          if (msg.indexOf(e[0]) != -1) {
+            replyMsg = e[0] + '的 PM2.5 數值為 ' + e[1];
+          }
+        });
+        if (replyMsg == '') {
+          replyMsg = '請輸入正確的地點';
+        }
+      }
+      if (replyMsg == '') {
+        replyMsg = '不知道「'+msg+'」是什麼意思 :p';
+      }
+
+      event.reply(replyMsg).then(function(data) {
+        console.log(replyMsg);
+      }).catch(function(error) {
+        console.log('error');
+      });
+    }
+  });
+
+}
+
+function _getJSON() {
+  // clearTimeout(timer);
+  getJSON('http://opendata2.epa.gov.tw/AQX.json', function(error, response) {
+    response.forEach(function(e, i) {
+      pm[i] = [];
+      pm[i][0] = e.SiteName;
+      pm[i][1] = e['PM2.5'] * 1;
+      pm[i][2] = e.PM10 * 1;
     });
-  }
-});
+  });
+  // timer = setInterval(_getJSON, 1800000); //每半小時抓取一次新資料
+}
+
+function _japan() {
+  // clearTimeout(timer2);
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    } else {
+      var $ = cheerio.load(body);
+      var target = $(".rate-content-sight.text-right.print_hide");
+      // console.log(target[14].children[0].data);
+      var jp = target[14].children[0].data;
+      var jp2 = target[0].children[0].data;
+      // if (jp > 0) {
+      	bot.on('message',function(event){
+      		event.reply('現在日幣匯率' + jp +'美金' +jp2);
+      	});
+        // bot.reply('使用者 ID', '現在日幣 ' + jp + '，該買啦！');
+      // }
+      // timer2 = setInterval(_japan, 120000);
+    }
+  });
+}
 
 /*bot.on('message', function(event) {
   console.log(event); //把收到訊息的 event 印出來看看

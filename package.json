@@ -10,5 +10,6 @@
 "apiai" : "*",
 "request" : "*",
 "cheerio" : "*"
+"get-json" : "*"
 }
 }
