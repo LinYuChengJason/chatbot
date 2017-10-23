@@ -10,6 +10,12 @@ var getJSON = require('get-json');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
+//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+var server = app.listen(process.env.PORT || 8080, function() {
+  var port = server.address().port;
+  console.log("App now running on port", port);
+});
+
 var timer;
 var pm = [];
 
@@ -101,20 +107,32 @@ var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
- 
- var request = api.textRequest('text', {
+
+
+app.get('/api' , function(request , response){
+	
+var apitext = api.textRequest('text', {
     sessionId: 'Jason'
 });
-
-request.on('response', function(response) {
+	
+apitext.on('response', function(response) {
     console.log(response);
 });
 
-request.on('error', function(error) {
+apitext.on('error', function(error) {
     console.log(error);
 })
- 
+
+if(err){                                     
+			response.status(406).end();             
+		} else{                                     
+			response.type('application/json');       
+			response.status(200).send(docs);
+			response.end();
+		}
+
 request.end();
+});
 
 /*app.post('/webhook', function(req, res) {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
@@ -148,12 +166,6 @@ app.get('/database', function(request, response){ //連接到/database才會做�
 			response.end();
 		}
    });
-});
-
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
 });
 
 
