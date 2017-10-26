@@ -46,8 +46,17 @@ var request = api.textRequest('text', {
 });
 	
 request.on('response', function(response) {
-	bot.reply(response);
-	bot.reply('求你成功');
+	var action = response.result.action;
+	var aiSpeech = response.result.fulfillment.speech;
+	if(action=='weather')
+	{
+		bot.reply(aiSpeech);
+        // var start_date = response.result.parameters['start-date'];
+        // var end_date = response.result.parameters['end-date'];
+        // var destination = response.result.parameters['destination'];
+        // var type = response.result.parameters['type'];		
+	}
+	
     console.log(response);
 });
 
