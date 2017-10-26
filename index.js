@@ -47,25 +47,34 @@ var text = message.text;
 var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
-var err = response.status(200);
-if(err){
-	request.on('response', function(response) {
-    console.log(response);
-	response.status(200);
-	}); 
+
+request.on('response', function(err,response){
+	if(err){
+		response.status(406).end();
+	}
+	else{
+		response.status(200).send(response);
+		request.end();
+	}
 }
+// var err = response.status(200);
+// if(err){
+// 	request.on('response', function(response) {
+//     console.log(response);
+// 	response.status(200);
+// 	request.end();
+// 	}); 
+// }
 
-else{
-	request.on('error', function(error) {
-    console.log(error);
-	//response.status(406).end();
-	})
-}
+// else{
+// 	request.on('error', function(error) {
+//     console.log(error);
+// 	response.status(406).end();
+// 	})
+// }
 
 
- 
 
-request.end();
 
 /*if(err){                                    
 			response.status(406).end();             
