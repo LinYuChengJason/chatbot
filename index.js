@@ -50,9 +50,7 @@ var request = api.textRequest('text', {
 
 
 request.on('response', function(response) {
-	bot.on('message', function(event){
-		event.reply(response);
-	});
+	bot.reply(response);
 	console.log(response);
 	// response.status(200);
 	// response.status(406).end();
