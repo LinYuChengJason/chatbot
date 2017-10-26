@@ -54,13 +54,13 @@ if(err){
 	request.on('response', function(response) {
 	bot.reply(response);
 	console.log(response);
-	// response.status(200);
+	response.status(200);
 	}); 
 }
 else{
 	request.on('error', function(error) {
 	console.log(error);
-	// response.status(406).end();
+	response.status(406).end();
 	}
 }
 
