@@ -46,6 +46,8 @@ var request = api.textRequest('text', {
 });
 	
 request.on('response', function(response) {
+	bot.reply(response);
+	bot.reply('求你成功');
     console.log(response);
 });
 
