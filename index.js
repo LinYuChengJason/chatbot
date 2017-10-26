@@ -1,11 +1,11 @@
-var express = require('express'); //require為使用模組
+var express = require('express'); //requireç‚ºä½¿ç”¨æ¨¡çµ„
 var bodyParser = require('body-parser');
 var linebot = require('linebot'); 
-var mongodb = require('mongodb'); //使用模組mongodb
+var mongodb = require('mongodb'); //ä½¿ç”¨æ¨¡çµ„mongodb
 var apiai = require('apiai');
 var request = require('request');
 
-var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
+var app = express(); //å»ºç«‹expresså¯¦é«”ï¼Œå°‡expressåˆå§‹åŒ–ï¼ŒåŽ»NEWä¸€å€‹expressï¼Œè®Šæ•¸appæ‰æ˜¯é‡é»žã€‚
 
 /*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -16,28 +16,28 @@ var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-}); // 連接line，驗證
+}); // é€£æŽ¥lineï¼Œé©—è­‰
 
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
+  //æ”¶åˆ°æ–‡å­—è¨Šæ¯æ™‚ï¼Œç›´æŽ¥æŠŠæ”¶åˆ°çš„è¨Šæ¯å‚³å›žåŽ»
     event.reply(msg).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
+      // å‚³é€è¨Šæ¯æˆåŠŸæ™‚ï¼Œå¯åœ¨æ­¤å¯«ç¨‹å¼ç¢¼ 
       console.log(msg);
     }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
+      // å‚³é€è¨Šæ¯å¤±æ•—æ™‚ï¼Œå¯åœ¨æ­¤å¯«ç¨‹å¼ç¢¼ 
+      console.log('éŒ¯èª¤ç”¢ç”Ÿï¼ŒéŒ¯èª¤ç¢¼ï¼š'+error);
     });
   }
 });
 
 /*bot.on('message', function(event) {
-  console.log(event); //把收到訊息的 event 印出來看看
+  console.log(event); //æŠŠæ”¶åˆ°è¨Šæ¯çš„ event å°å‡ºä¾†çœ‹çœ‹
 });*/
 
 var linebotParser = bot.parser();
-app.post('/', linebotParser);  //路徑 
+app.post('/', linebotParser);  //è·¯å¾‘ 
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
 
@@ -48,19 +48,36 @@ var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
 
+var err=response.status(200);
 
-request.on('response', function(response) {
-	// bot.reply(response);
-	 console.log(response);
-}); 
-
-response.status(200);
-
-request.on('error', function(error) {
+if(err){
+	request.on('response', function(response) {
+	bot.reply(response);
+	console.log(response);
+	// response.status(200);
+	}); 
+}
+else{
+	request.on('error', function(error) {
 	console.log(error);
+	// response.status(406).end();
+	}
 }
 
-response.status(406).end();
+// request.on('response', function(response) {
+// 	bot.reply(response);
+// 	console.log(response);
+// 	response.status(200);
+// }); 
+
+
+
+// request.on('error', function(error) {
+// 	console.log(error);
+// 	response.status(406).end();
+// }
+
+
 
 request.end();
 
@@ -83,32 +100,32 @@ request.end();
     });
 });*/
 var mongodbURL =
-'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
+'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //å°‡MongoDBçš„ä½ç½®åœ¨Serverç¨‹å¼ç¢¼ä¸­ä»¥ä¸€å€‹è®Šæ•¸å„²å­˜
 
-var myDB; //建立一個全域變數myDB
-mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
-	if(err){                                               //事件監聽器用在非同步程式碼，不確定何時會用到
-		console.log(err);                                  //若回傳的參數有error，用console.log()印出錯誤內容
+var myDB; //å»ºç«‹ä¸€å€‹å…¨åŸŸè®Šæ•¸myDB
+mongodb.MongoClient.connect(mongodbURL, function(err, db){ //ä½¿ç”¨mongodb.MongoClientçš„æ–¹æ³•connect()é€²è¡Œé€£ç·š
+	if(err){                                               //äº‹ä»¶ç›£è½å™¨ç”¨åœ¨éžåŒæ­¥ç¨‹å¼ç¢¼ï¼Œä¸ç¢ºå®šä½•æ™‚æœƒç”¨åˆ°
+		console.log(err);                                  //è‹¥å›žå‚³çš„åƒæ•¸æœ‰errorï¼Œç”¨console.log()å°å‡ºéŒ¯èª¤å…§å®¹
 	} else{
-		myDB = db;                                         //在mongoDB成功連線後，留住db物件
-		console.log('connection success');                 //若沒有錯誤表示連線成功，印出connection success
+		myDB = db;                                         //åœ¨mongoDBæˆåŠŸé€£ç·šå¾Œï¼Œç•™ä½dbç‰©ä»¶
+		console.log('connection success');                 //è‹¥æ²’æœ‰éŒ¯èª¤è¡¨ç¤ºé€£ç·šæˆåŠŸï¼Œå°å‡ºconnection success
 	}
 });
 
-app.get('/database', function(request, response){ //連接到/database才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
-	var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
-	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
-		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
-			response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
-		} else{                                      //.end()為將資料回傳給使用者
-			response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
+app.get('/database', function(request, response){ //é€£æŽ¥åˆ°/databaseæ‰æœƒåšçš„äº‹æƒ…ï¼Œrequestå¸¶æœ‰é€£æŽ¥é€²ä¾†çš„è³‡è¨Š(åƒæ•¸)ï¼Œresponseç‚ºå›žå‚³çš„å…§å®¹ã€‚
+	var collection = myDB.collection('data'); //ä½¿ç”¨myDBçš„æ–¹æ³•collection('data')å–å¾—dataé€™å€‹collection
+	collection.find({}).toArray(function(err, docs){ //ä½¿ç”¨collectionçš„æ–¹æ³•find()å–å¾—è³‡æ–™è¡¨å…§çš„å…§å®¹ï¼Œ{}è¡¨ç¤ºå–å¾—å…¨éƒ¨å…§å®¹
+		if(err){                                     //ä½¿ç”¨toArray()å°‡è³‡æ–™è½‰æˆé™£åˆ—ï¼Œfunctionçš„docsæ˜¯è½‰æˆé™£åˆ—å¾Œçš„çµæžœ
+			response.status(406).end();              //è½‰é™£åˆ—éŽç¨‹è‹¥æœ‰errï¼Œå›žå‚³çµ¦éŒ¯èª¤ç¢¼406ï¼Œæ­¤ç‚ºHttpå”å®šç‹€æ…‹ç¢¼      
+		} else{                                      //.end()ç‚ºå°‡è³‡æ–™å›žå‚³çµ¦ä½¿ç”¨è€…
+			response.type('application/json');       //æ²’æœ‰éŒ¯èª¤å›žå‚³ç‹€æ…‹ç¢¼200ä¸¦é™„å¸¶è‘—è³‡æ–™ï¼Œå› ç‚ºMongoDBå­˜çš„è³‡æ–™å°±æ˜¯JSONï¼Œæ‰€ä»¥ä¸ç”¨ç‰¹åˆ¥è½‰æ›
 			response.status(200).send(docs);
 			response.end();
 		}
    });
 });
 
-//因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
+//å› ç‚º express é è¨­èµ° port 3000ï¼Œè€Œ heroku ä¸Šé è¨­å»ä¸æ˜¯ï¼Œè¦é€éŽä¸‹åˆ—ç¨‹å¼è½‰æ›
 var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
   console.log("App now running on port", port);
