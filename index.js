@@ -47,18 +47,21 @@ var text = message.text;
 var request = api.textRequest('text', {
     sessionId: 'Jason'
 });
-	
-request.on('response', function(response) {
+var err = response.status(200);
+if(err){
+	request.on('response', function(response) {
     console.log(response);
 	response.status(200);
-}); 
+	}); 
+}
 
-
-
-request.on('error', function(error) {
+else{
+	request.on('error', function(error) {
     console.log(error);
-	response.status(406).end();
-})
+	//response.status(406).end();
+	})
+}
+
 
  
 
