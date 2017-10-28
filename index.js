@@ -42,14 +42,13 @@ app.get('/api' , function(request , response){
 	request.on('response', function(response) {
     console.log(response);
 	});
-
-	response.status(200);
  
 	request.on('error', function(error) {
     console.log(error);
 	});
- 
-	response.status(406);
+
+	response.status(200).send("Succeed Save"); 
+	response.end();
 
 	request.end();	
 });
