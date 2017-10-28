@@ -46,11 +46,13 @@ app.get('/api' , function(request , response){
 	request.on('error', function(error) {
     console.log(error);
 	});
-
+	
+	request.end();
+	
 	response.status(200).send("Succeed Save"); 
 	response.end();
 
-	request.end();	
+		
 });
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
