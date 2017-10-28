@@ -16,7 +16,7 @@ var bot = linebot({
 bot.on('message', function(event) {
   if (event.message.type = 'text') {
     var msg = event.message.text;
-  //收到文字訊息時，直接把收到的訊息傳回去
+  // 收到文字訊息時，直接把收到的訊息傳回去
     event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(msg);
@@ -30,6 +30,29 @@ bot.on('message', function(event) {
 var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
+
+var api = apiai("96499911855b40b29cc7908eca2ed768");
+
+
+app.get('/api' , function(request , response){
+	var request = api.textRequest('text', {
+    sessionId: 'Jason'
+	});
+ 
+	request.on('response', function(response) {
+    console.log(response);
+	});
+
+	response.status(200);
+ 
+	request.on('error', function(error) {
+    console.log(error);
+	});
+ 
+	response.status(406);
+
+	request.end();	
+});
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
