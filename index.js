@@ -43,7 +43,7 @@ app.get('/api' , function(request , response){
  
 	request.on('response', function(response) {
     console.log(response);
-    abc = response;
+    abc = "e04su3su;;6";
 	});
  
 	request.on('error', function(error) {
