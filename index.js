@@ -43,7 +43,7 @@ app.get('/api' , function(request , response){
 	});
  
 	request.on('response', function(response) {
-    console.log(response);
+    console.log("123");
 	});
  
 	request.on('error', function(error) {
