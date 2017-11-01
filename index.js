@@ -37,7 +37,7 @@ var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 
 app.get('/api' , function(request , response){
-	var request = api.textRequest('text', {
+	var request = api.textRequest('msg', {
     sessionId: 'Jason'
 	});
  
