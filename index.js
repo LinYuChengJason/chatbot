@@ -9,7 +9,6 @@ var app = express(); //建立express實體，將express初始化，去NEW一個e
 
 var msg = '';
 var abc = '幹你娘';
-var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -21,37 +20,39 @@ bot.on('message', function(event) {
   if (event.message.type = 'text') {
      msg = event.message.text;
   // 收到文字訊息時，直接把收到的訊息傳回去
+    
+	var request = api.textRequest('msg', {
+    sessionId: 'Jason'
+	});
+ 
+	request.on('response', function(response) {
+    console.log(abc);
+	});
+ 
+	request.on('error', function(error) {
+    console.log(error);
+	});
+	
+	request.end();
+
+
     event.reply(abc).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(abc);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
-
-	   	var request = api.textRequest('msg', {
-	    sessionId: 'Jason'
-		});
-	 
-		request.on('response', function(response) {
-	    console.log(response);
-		});
-	 
-		request.on('error', function(error) {
-	    console.log(error);
-		});
-		
-		request.end();
-	    });
-	}
+    });
+  }
 });
 
 var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
 
+var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 
-	
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
