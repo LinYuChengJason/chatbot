@@ -8,6 +8,7 @@ var request = require('request');
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
 var msg = '';
+var abc = '幹你娘';
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -34,7 +35,7 @@ var linebotParser = bot.parser();
 app.post('/', linebotParser);  //路徑 
 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
-var abc = '';
+
 
 app.get('/api' , function(request , response){
 	var request = api.textRequest('msg', {
@@ -43,7 +44,6 @@ app.get('/api' , function(request , response){
  
 	request.on('response', function(response) {
     console.log(response);
-    abc = "e04su3su;;6";
 	});
  
 	request.on('error', function(error) {
