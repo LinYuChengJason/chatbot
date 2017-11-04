@@ -9,6 +9,7 @@ var app = express(); //建立express實體，將express初始化，去NEW一個e
 
 var msg = '';
 var abc = '幹你娘';
+var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 var bot = linebot({
   "channelId": "1531669581",
@@ -49,10 +50,6 @@ bot.on('message', function(event) {
 var linebotParser = bot.parser();
 
 app.post('/', linebotParser);  //路徑 
-
-var api = apiai("96499911855b40b29cc7908eca2ed768");
-
-
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
