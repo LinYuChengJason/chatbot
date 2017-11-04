@@ -22,29 +22,11 @@ bot.on('message', function(event) {
      msg = event.message.text;
   // 收到文字訊息時，直接把收到的訊息傳回去
     
-	var request = api.textRequest('text', {
+	var request = api.textRequest('msg', {
     sessionId: 'Jason'
 	});
  
 	request.on('response', function(response) {
-
-	var action = response.result.action;
-    var aiSpeech = response.result.fulfillment.speech;
- 	if (action == 'weather') {
-		bot.reply(message, aiSpeech);
-        var start_date = response.result.parameters['start-date'];
-        var end_date = response.result.parameters['end-date'];
-        var destination = response.result.parameters['destination'];
-        var type = response.result.parameters['type'];
-
-        setTimeout(function () {
-			 bot.reply(message, "車子已經預定成功，請記得領車時攜帶您的身分證件，感謝您");
-		 }, 5000);
-
-	} else {
-            bot.reply(message, aiSpeech);
-        }
-    });
     console.log(abc);
 	});
  
@@ -53,6 +35,7 @@ bot.on('message', function(event) {
 	});
 	
 	request.end();
+
 
     event.reply(abc).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
