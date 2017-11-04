@@ -7,8 +7,6 @@ var request = require('request');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-var msg = '';
-var abc = '幹你娘';
 var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 var bot = linebot({
