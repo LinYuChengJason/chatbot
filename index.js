@@ -4,8 +4,6 @@ var apiai = require('apiai');
 
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-var msg = '';
-var abc = '幹你娘';
 var api = apiai("96499911855b40b29cc7908eca2ed768");
 
 var bot = linebot({
@@ -15,10 +13,15 @@ var bot = linebot({
 }); // 連接line，驗證
 
 bot.on('message', function(event) {
-  if (event.message.type = 'text') {
-     msg = event.message.text;
   // 收到文字訊息時，直接把收到的訊息傳回去
-    
+     event.reply('Hello World').then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(msg);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });   
+
 	var request = api.textRequest('msg', {
     sessionId: 'Jason'
 	});
@@ -32,15 +35,6 @@ bot.on('message', function(event) {
 	});
 	
 	request.end();
-
-
-    event.reply(abc).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(abc);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
   }
 });
 
