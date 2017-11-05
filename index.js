@@ -19,7 +19,7 @@ bot.on('message', function (event) {
 
     var msg = {
     type : 'text',
-    text : ''
+    text : msg
   };
         console.log(msg);// success 
     }).catch(function (error) {
