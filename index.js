@@ -12,19 +12,18 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-bot.on('message', function (event) {
-
-    var msg = event.message.text;
-    event.reply(msg).then(function (data) {
-
-    var msg = {
-    type : 'text',
-    text : msg
-  };
-        console.log(msg);// success 
-    }).catch(function (error) {
-        console.log('error');// error 
+bot.on('message', function(event) {
+  if (event.message.type = 'text') {
+     msg = event.message.text;
+  // 收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(abc).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(abc);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
     });
+  }
 });
 
 var linebotParser = bot.parser();
