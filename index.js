@@ -13,8 +13,13 @@ var bot = linebot({
 }); // 連接line，驗證
 
 bot.on('message', function (event) {
-    event.reply(event.message.text).then(function (data) 
-    {
+
+	var msg = {
+		type : 'text',
+		text : 'hello'
+	};
+
+    event.reply(msg).then(function (data) {
         console.log('success');// success 
     }).catch(function (error) {
         console.log('error');// error 
