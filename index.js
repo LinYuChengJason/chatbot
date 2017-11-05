@@ -17,7 +17,7 @@ bot.on('message', function (event) {
     {
         console.log('success');// success 
     }).catch(function (error) {
-        console.log('error)';// error 
+        console.log('error');// error 
     });
 });
 
