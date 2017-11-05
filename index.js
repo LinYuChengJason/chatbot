@@ -14,13 +14,15 @@ var bot = linebot({
 
 bot.on('message', function (event) {
 
-	var msg = {
-		type : 'text',
-		text : 'hello'
-	};
-
+    var msg = event.message.text;
     event.reply(msg).then(function (data) {
-        console.log('success');// success 
+  
+    var msg = {
+    type : 'text',
+    text : 'hello'
+  };
+
+        console.log(msg);// success 
     }).catch(function (error) {
         console.log('error');// error 
     });
