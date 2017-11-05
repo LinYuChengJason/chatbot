@@ -16,12 +16,11 @@ bot.on('message', function (event) {
 
     var msg = event.message.text;
     event.reply(msg).then(function (data) {
-  
+
     var msg = {
     type : 'text',
-    text : 'hello'
+    text : ''
   };
-
         console.log(msg);// success 
     }).catch(function (error) {
         console.log('error');// error 
