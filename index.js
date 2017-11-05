@@ -12,30 +12,13 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); // 連接line，驗證
 
-bot.on('message', function(event) {
-  // 收到文字訊息時，直接把收到的訊息傳回去
-     event.reply('Hello World').then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });   
-
-	var request = api.textRequest('msg', {
-    sessionId: 'Jason'
-	});
- 
-	request.on('response', function(response) {
-    console.log(abc);
-	});
- 
-	request.on('error', function(error) {
-    console.log(error);
-	});
-	
-	request.end();
-  }
+bot.on('message', function (event) {
+    event.reply(event.message.text).then(function (data) 
+    {
+        console.log('success');// success 
+    }).catch(function (error) {
+        console.log('error)';// error 
+    });
 });
 
 var linebotParser = bot.parser();
