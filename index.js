@@ -16,7 +16,6 @@ var bot = linebot({
 }); 
 
 bot.on('message', function(event) {
-  if (event.message.type = 'text') {
      msg = event.message.text;
 
 	var request = api.textRequest('text', {
@@ -24,6 +23,9 @@ bot.on('message', function(event) {
 	});
 	 
 	request.on('response', function(response) {
+
+		var 
+
 	    console.log(response);
 	});
 	 
