@@ -17,8 +17,7 @@ var bot = linebot({
 
 bot.on('message', function(event) {
 
-	var msg = event.message.text;
-	var request = api.textRequest('text', {
+	var request = api.textRequest(event, {
 	    sessionId: '<Jason>'
 	});
 	 
@@ -26,18 +25,18 @@ bot.on('message', function(event) {
 
   	var action = response.result.action;    
   	var aiSpeech = response.result.fulfillment.speech;
-
+  	if (action == 'weather') {
   // 收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(msg).then(function(data) {
+    event.reply(aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
-      console.log(msg);
+      console.log(aiSpeech);
     }).catch(function(error) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
 	    console.log(response);
-	});
-	 
+	}});
+
 	request.on('error', function(error) {
 	    console.log(error);
 	});
