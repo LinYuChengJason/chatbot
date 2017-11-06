@@ -23,6 +23,8 @@ bot.on('message', function(event) {
 	});
 	 
 	request.on('response', function(response) {
+
+	console.log('request success');
   	var action = response.result.action;    
   	var aiSpeech = response.result.fulfillment.speech;
 
