@@ -37,6 +37,10 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
 	    console.log(response);
+
+setTimeout(function () {
+ 			event.reply(message, "車子已經預定成功，請記得領車時攜帶您的身分證件，感謝您");
+            }, 500
 	}});
 
 	request.on('error', function(error) {
