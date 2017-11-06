@@ -17,16 +17,17 @@ var bot = linebot({
 
 bot.on('message', function(event) {
 
+	var msg = event.message.text;
 	var request = api.textRequest('text', {
 	    sessionId: '<Jason>'
 	});
 	 
 	request.on('response', function(response) {
-  var action = response.result.action;    
-  var aiSpeech = response.result.fulfillment.speech;
+  	var action = response.result.action;    
+  	var aiSpeech = response.result.fulfillment.speech;
 
   // 收到文字訊息時，直接把收到的訊息傳回去
-    event.reply('OMG').then(function(data) {
+    event.reply(msg).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
