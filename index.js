@@ -17,6 +17,8 @@ var bot = linebot({
 
 bot.on('message', function(event) {
 
+	var text = event.message.text;
+
 	var request = api.textRequest(text, {
 	    sessionId: '<Jason>'
 	});
