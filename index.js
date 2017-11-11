@@ -15,6 +15,22 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
+var jp = function() {
+  request({
+    url: "http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm",
+    method: "GET"
+  }, function(error, response, body) {
+    if (error || !body) {
+      return;
+    }else{
+
+    // 爬完網頁後要做的事情
+        console.log(body);
+    }
+  });
+};
+
+//bot收到訊息後
 bot.on('message', function(event) {
 
 	var text = event.message.text;
