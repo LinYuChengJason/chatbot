@@ -17,7 +17,8 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
-app.get('/request', function(request, response){ 
+// app.get('/', function(request, response){ 
+
 	  request({
     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
     method: "GET"
@@ -44,46 +45,46 @@ app.get('/request', function(request, response){
       }
   });
 
-	response.status(200);
-	response.end(); //end為回傳給使用者
-});
+// 	response.status(200);
+// 	response.end(); //end為回傳給使用者
+// });
 
-//bot收到訊息後
-bot.on('message', function(event) {
+// //bot收到訊息後
+// bot.on('message', function(event) {
 
-	var text = event.message.text;
+// 	var text = event.message.text;
 
-	var request = api.textRequest(text, {
-	    sessionId: '<Jason>'
-	});
+// 	var request = api.textRequest(text, {
+// 	    sessionId: '<Jason>'
+// 	});
 	 
-	request.on('response', function(response) {
+// 	request.on('response', function(response) {
 
-  	var action = response.result.action;    
-  	var aiSpeech = response.result.fulfillment.speech;
-  	if (action == 'weather') {
-  // 收到文字訊息時，直接把收到的訊息傳回去
-    event.reply(aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-	    console.log(response);
-	}});
+//   	var action = response.result.action;    
+//   	var aiSpeech = response.result.fulfillment.speech;
+//   	if (action == 'weather') {
+//   // 收到文字訊息時，直接把收到的訊息傳回去
+//     event.reply(aiSpeech).then(function(data) {
+//       // 傳送訊息成功時，可在此寫程式碼 
+//       console.log(aiSpeech);
+//     }).catch(function(error) {
+//       // 傳送訊息失敗時，可在此寫程式碼 
+//       console.log('錯誤產生，錯誤碼：'+error);
+//     });
+// 	    console.log(response);
+// 	}});
 
-	request.on('error', function(error) {
-	    console.log(error);
-	});
+// 	request.on('error', function(error) {
+// 	    console.log(error);
+// 	});
 	 
-	request.end();
-});
+// 	request.end();
+// });
 
-// var linebotParser = bot.parser();
+var linebotParser = bot.parser();
 
-// //路徑
-// app.post('/', linebotParser);   
+//路徑
+app.post('/', linebotParser);   
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
