@@ -19,9 +19,8 @@ app.get('/test', function(request, response){
 		
 		if(err){                                     
 			response.status(406).end();                    
-		} else{                    
-			console.log(Succeed);                  			     
-			response.status(200);
+		} else{                                      			     
+			response.status(200).send('Succeed');
 			response.end();
 		}
    });
