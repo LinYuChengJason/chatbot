@@ -25,7 +25,7 @@ app.get('/test', function(request, response){
 			response.end();
 		}
    });
-});
+
 //bot收到訊息後
 bot.on('message', function(event) {
 
