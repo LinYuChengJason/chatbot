@@ -19,67 +19,67 @@ var bot = linebot({
 
 // app.get('/', function(request, response){ 
 
-	  request({
-    url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
-    method: "GET"
-  }, function(error, response, body) {
-    if (error || !body) {
-      return;
-    } else {
-      var $ = cheerio.load(body);
-      var target = $(".PrintShowTimesFilm");
-      var target2 = $(".PrintShowTimesDay");
-      var target3 = $(".PrintShowTimesSession")
-      // console.log(target[14].children[0].data);
-      // var showtimes = []
-      var movie = target[0].children[0].data;
-      var movie2 = target2[0].children[0].data;
-      var movie3 = target3[0].children[0].data;
+// 	  request({
+//     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
+//     method: "GET"
+//   }, function(error, response, body) {
+//     if (error || !body) {
+//       return;
+//     } else {
+//       var $ = cheerio.load(body);
+//       var target = $(".PrintShowTimesFilm");
+//       var target2 = $(".PrintShowTimesDay");
+//       var target3 = $(".PrintShowTimesSession")
+//       // console.log(target[14].children[0].data);
+//       // var showtimes = []
+//       var movie = target[0].children[0].data;
+//       var movie2 = target2[0].children[0].data;
+//       var movie3 = target3[0].children[0].data;
       
-      // if (jp > 0) {
-        bot.on('message',function(event){
-          event.reply('電影'+ movie + movie2 + movie3);     
-        // });
-       // resolve(showtimes)
-         });
-      }
-  });
+//       // if (jp > 0) {
+//         bot.on('message',function(event){
+//           event.reply('電影'+ movie + movie2 + movie3);     
+//         // });
+//        // resolve(showtimes)
+//          });
+//       }
+//   });
 
 // 	response.status(200);
 // 	response.end(); //end為回傳給使用者
 // });
 
-// //bot收到訊息後
-// bot.on('message', function(event) {
+//bot收到訊息後
+bot.on('message', function(event) {
 
-// 	var text = event.message.text;
+	var text = event.message.text;
 
-// 	var request = api.textRequest(text, {
-// 	    sessionId: '<Jason>'
-// 	});
+	var request = api.textRequest(text, {
+	    sessionId: '<Jason>'
+	});
 	 
-// 	request.on('response', function(response) {
+	request.on('response', function(response) {
 
-//   	var action = response.result.action;    
-//   	var aiSpeech = response.result.fulfillment.speech;
-//   	if (action == 'weather') {
-//   // 收到文字訊息時，直接把收到的訊息傳回去
-//     event.reply(aiSpeech).then(function(data) {
-//       // 傳送訊息成功時，可在此寫程式碼 
-//       console.log(aiSpeech);
-//     }).catch(function(error) {
-//       // 傳送訊息失敗時，可在此寫程式碼 
-//       console.log('錯誤產生，錯誤碼：'+error);
-//     });
-// 	    console.log(response);
-// 	}});
+  	var action = response.result.action;    
+  	var aiSpeech = response.result.fulfillment.speech;
+  	if (action == 'weather') {
+  // 收到文字訊息時，直接把收到的訊息傳回去
+    event.reply(aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+	    console.log(response);
+	}});
 
-// 	request.on('error', function(error) {
-// 	    console.log(error);
-// 	});
+	request.on('error', function(error) {
+	    console.log(error);
+	});
 	 
-// 	request.end();
-// });
+	request.end();
+});
 
 var linebotParser = bot.parser();
 
