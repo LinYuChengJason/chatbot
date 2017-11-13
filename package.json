@@ -5,6 +5,7 @@
 "dependencies" : { 
 "express" : "*", 
 "linebot" : "*",
-"apiai" : "*"
-}
+"apiai" : "*",
+"request" : "*",
+"cheerio" : "*"
 }
