@@ -18,7 +18,6 @@ var bot = linebot({
 }); 
 
 app.get('/request', function(request, response){ 
-
 	  request({
     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
     method: "GET"
@@ -81,10 +80,10 @@ bot.on('message', function(event) {
 	request.end();
 });
 
-var linebotParser = bot.parser();
+// var linebotParser = bot.parser();
 
-//路徑
-app.post('/', linebotParser);   
+// //路徑
+// app.post('/', linebotParser);   
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
