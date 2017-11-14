@@ -17,7 +17,7 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
-app.post('/', function(request, response){ 
+app.get('/', function(request, response){ 
 
     bot.on('message', function(event) {
 	  Request({
