@@ -13,6 +13,14 @@ var mongodbURL =
 'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
 
 var myDB; //建立一個全域變數myDB
+
+// 連接line，驗證
+var bot = linebot({
+  "channelId": "1531669581",
+  "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
+  "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
+}); 
+
 mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
   if(err){                                               //事件監聽器用在非同步程式碼，不確定何時會用到
     console.log(err);                                  //若回傳的參數有error，用console.log()印出錯誤內容
@@ -22,25 +30,23 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
   }
 });
 
-app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+// app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+bot.on('message', function(event) {
   var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
   collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
-    if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
-      response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
-    } else{                                      //.end()為將資料回傳給使用者
-      response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
-      response.status(200).send(docs);
-      response.end();
-    }
+
+     event.reply(docs).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(docs);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+    
    });
 });
 
-// 連接line，驗證
-var bot = linebot({
-  "channelId": "1531669581",
-  "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
-  "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-}); 
+app.post('/database', linebotParser);  
 
 bot.on('message', function(event) {
 
