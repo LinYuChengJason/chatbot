@@ -29,6 +29,9 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
     console.log('connection success');                 //若沒有錯誤表示連線成功，印出connection success
   }
 });
+var linebotParser = bot.parser();
+
+app.post('/database', linebotParser); 
 
 // app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 bot.on('message', function(event) {
@@ -42,11 +45,12 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-    
+
    });
 });
 
-app.post('/database', linebotParser);  
+//路徑
+app.post('/', linebotParser);  
 
 bot.on('message', function(event) {
 
@@ -78,11 +82,6 @@ bot.on('message', function(event) {
 	 
 	request.end();
 });
-
-var linebotParser = bot.parser();
-
-//路徑
-app.post('/', linebotParser);   
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
