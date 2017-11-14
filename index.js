@@ -2,7 +2,7 @@
 var express = require('express'); 
 var linebot = require('linebot'); 
 var apiai = require('apiai');
-var request = require('request');
+var Request = require('request');
 var cheerio = require('cheerio');
 
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
@@ -20,7 +20,7 @@ var bot = linebot({
 app.post('/', function(request, response){ 
 
     bot.on('message', function(event) {
-	  request({
+	  Request({
     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
     method: "GET"
   }, function(error, response, body) {
