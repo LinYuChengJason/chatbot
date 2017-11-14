@@ -2,8 +2,6 @@
 var express = require('express'); 
 var linebot = require('linebot'); 
 var apiai = require('apiai');
-var request = require('request');
-var cheerio = require('cheerio');
 
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var app = express(); 
@@ -15,41 +13,8 @@ var bot = linebot({
   "channelId": "1531669581",
   "channelSecret": "a990b2c5396e8e5c207db5e034d74711",
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
-});
+}); 
 
-// app.post('/test', function(request, response){ 
-
-// 	  request({
-//     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
-//     method: "GET"
-//   }, function(error, response, body) {
-//     if (error || !body) {
-//       return;
-//     } else {
-//       var $ = cheerio.load(body);
-//       var target = $(".PrintShowTimesFilm");
-//       var target2 = $(".PrintShowTimesDay");
-//       var target3 = $(".PrintShowTimesSession")
-//       // console.log(target[14].children[0].data);
-//       // var showtimes = []
-//       var movie = target[0].children[0].data;
-//       var movie2 = target2[0].children[0].data;
-//       var movie3 = target3[0].children[0].data;
-      
-//       // if (jp > 0) {
-//         // bot.on('message',function(event){
-//       event.reply('電影'+ movie + movie2 + movie3);
-
-//       response.status(200);
-//       response.end(); //end為回傳給使用者
-//         // });
-//        // resolve(showtimes)
-//          // });
-//       }
-//   });
-// });
-
-//bot收到訊息後
 bot.on('message', function(event) {
 
 	var text = event.message.text;
@@ -71,7 +36,6 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-      event.reply('電影'+ movie + movie2 + movie3);
 	    console.log(response);
 	}});
 
