@@ -2,6 +2,7 @@
 var express = require('express'); 
 var linebot = require('linebot'); 
 var apiai = require('apiai');
+var mongodb = require('mongodb');
 
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var app = express(); 
