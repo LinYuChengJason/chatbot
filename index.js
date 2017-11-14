@@ -20,6 +20,9 @@ var bot = linebot({
 var movie;
 var movie2;
 var movie3;
+var target;
+var targer2;
+var target3;
 
 app.post('/test', function(request, response){ 
 
