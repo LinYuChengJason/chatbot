@@ -27,7 +27,7 @@ bot.on('message', function(event) {
 
   	var action = response.result.action;    
   	var aiSpeech = response.result.fulfillment.speech;
-  	if (action == 'weather') {
+  	if (action == 'movie') {
   // 收到文字訊息時，直接把收到的訊息傳回去
     event.reply(aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
