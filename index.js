@@ -19,6 +19,7 @@ var bot = linebot({
 
 app.post('/', function(request, response){ 
 
+    bot.on('message', function(event) {
 	  request({
     url: "http://www.vscinemas.com.tw/visPrintShowTimes.aspx?cid=TP&visLang=2",
     method: "GET"
@@ -47,6 +48,7 @@ app.post('/', function(request, response){
          // });
       }
   });
+  })
 });
 
 //bot收到訊息後
