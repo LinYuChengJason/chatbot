@@ -15,8 +15,7 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
-app.post('/', function(req, res){
-  bot.on('message', function(event) {
+bot.on('message', function(event) {
 
 	var text = event.message.text;
 
@@ -45,15 +44,12 @@ app.post('/', function(req, res){
 	});
 	 
 	request.end();
-
-  res.end();
-});
 });
 
-// var linebotParser = bot.parser();
+var linebotParser = bot.parser();
 
-// //路徑
-// app.post('/', linebotParser);   
+//路徑
+app.post('/', linebotParser);   
 
 //因為 express 預設走 port 3000，而 heroku 上預設卻不是，要透過下列程式轉換
 var server = app.listen(process.env.PORT || 8080, function() {
