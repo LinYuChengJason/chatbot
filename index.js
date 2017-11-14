@@ -65,7 +65,7 @@ var linebotParser = bot.parser();
 //路徑
 app.post('/', linebotParser);   
 
-app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.post('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
   var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
   collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
     if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
