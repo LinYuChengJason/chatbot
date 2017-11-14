@@ -38,17 +38,16 @@ app.get('/', function(request, response){
       
       // if (jp > 0) {
         // bot.on('message',function(event){
-          event.reply('電影'+ movie + movie2 + movie3);   
-          response.end();   
+          event.reply('電影'+ movie + movie2 + movie3);     
         // });
        // resolve(showtimes)
          // });
       }
   });
 
-// 	response.status(200);
-// 	response.end(); //end為回傳給使用者
-// });
+	response.status(200);
+	response.end(); //end為回傳給使用者
+});
 
 //bot收到訊息後
 bot.on('message', function(event) {
