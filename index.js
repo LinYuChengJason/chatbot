@@ -83,6 +83,7 @@ bot.on('message', function(event) {
 
   response.end();
 });
+}
 
 // var linebotParser = bot.parser();
 
