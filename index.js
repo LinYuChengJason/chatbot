@@ -4,10 +4,8 @@ var linebot = require('linebot');
 var apiai = require('apiai');
 
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
-var app = express(); 
-
+ 
 var api = apiai("96499911855b40b29cc7908eca2ed768");
-
 // 連接line，驗證
 var bot = linebot({
   "channelId": "1531669581",
@@ -18,8 +16,7 @@ var bot = linebot({
 bot.on('message', function(event) {
 
 	var text = event.message.text;
-
-	var request = api.textRequest(text, {
+  var request = api.textRequest(text, {
 	    sessionId: '<Jason>'
 	});
 	 
@@ -46,8 +43,8 @@ bot.on('message', function(event) {
 	request.end();
 });
 
+var app = express();
 var linebotParser = bot.parser();
-
 //路徑
 app.post('/', linebotParser);   
 
