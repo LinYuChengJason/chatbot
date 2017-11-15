@@ -6,6 +6,7 @@ var apiai = require('apiai');
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var app = express();
 var api = apiai("96499911855b40b29cc7908eca2ed768");
+
 // 連接line，驗證
 var bot = linebot({
   "channelId": "1531669581",
@@ -13,10 +14,13 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
+//將MongoDB的位置在Server程式碼中以一個變數儲存
 var mongodbURL =
-'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; //將MongoDB的位置在Server程式碼中以一個變數儲存
+'mongodb://LinYuCheng:a0936662285@ds143081.mlab.com:43081/jasondatabase'; 
 
-var myDB; //建立一個全域變數myDB
+//建立一個全域變數myDB
+var myDB; 
+
 mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
   if(err){                                               //事件監聽器用在非同步程式碼，不確定何時會用到
     console.log(err);                                  //若回傳的參數有error，用console.log()印出錯誤內容
