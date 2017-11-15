@@ -6,8 +6,9 @@
 "express" : "*", 
 "linebot" : "*",
 "apiai" : "*",
-"request" : "*",
+"js-crawler" : "*",
 "cheerio" : "*",
-"mongodb" : "*"
+"lodash" : "*",
+"promise" : "*"
 }
 }
