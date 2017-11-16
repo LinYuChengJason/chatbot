@@ -62,7 +62,16 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
 	    console.log(response);
-	}});
+	}else if (action == 'weather'){
+    event.reply(aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }
+});
 
 	request.on('error', function(error) {
 	    console.log(error);
