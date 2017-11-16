@@ -71,7 +71,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '國賓大戲院11/23'){
-    event.reply(aiSpeech).then(function(data) {
+    event.reply('今日上映中的電影時刻為以下'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
