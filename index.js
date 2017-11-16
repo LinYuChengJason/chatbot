@@ -78,6 +78,14 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
+  }else if (action == '國賓影城@台北微風廣場11/23'){
+    event.reply('今日上映中的電影時刻為以下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
   }
 });
 
