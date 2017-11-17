@@ -167,7 +167,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '秀泰影城'){
-    event.reply(aiSpeech).then(function(data) {
+    event.reply( ).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
@@ -175,30 +175,6 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '欣欣秀泰影城11/23'){
-    event.reply('今日上映中的電影時刻為以下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('今日上映中的電影時刻為以下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('今日上映中的電影時刻為以下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
     event.reply('今日上映中的電影時刻為以下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
