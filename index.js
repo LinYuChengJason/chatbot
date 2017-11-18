@@ -288,6 +288,350 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
+  }else if (action == '國賓影城台北長春廣場相愛相親'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場常在你左右'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場尋找費里尼'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場正義聯盟'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場神力女超人的秘密'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場絕處逢山'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場奪魂鋸：遊戲重啟'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場乒乓少女大逆襲'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場推倒白宮的男人'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場關原之戰'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場女王與知己'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場我要為你呼吸'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場雷神索爾3：諸神黃昏'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場人生剩利組'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場梵谷：星夜之謎'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場氣象戰'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場大佛普拉斯'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北長春廣場解憂雜貨店'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
   }else if (action == ''){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
