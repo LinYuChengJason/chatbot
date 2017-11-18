@@ -240,7 +240,47 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城台北微風廣場正義聯盟'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北微風廣場絕處逢山'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北微風廣場奪魂鋸：遊戲重啟'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北微風廣場雷神索爾3：諸神黃昏'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北微風廣場氣象戰'){
+    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == '國賓影城台北微風廣場大佛普拉斯'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -272,40 +312,8 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+  }else {
+    event.reply('1.只要輸入"電影時刻表"或是影城名稱，就能夠引導你得到該影城的所有電影時刻表!ex:電影時刻表或是國賓影城中和環球購物中心。2.只要輸入"影城名稱:電影名稱"，就能夠得到該影城的指定電影時刻表!ex:中和國賓:正義聯盟3.只要輸入電影名稱，就能夠同時得到多家影城的指定電影時刻表!ex:正義聯盟目前支援的影城:威秀、秀泰、國賓。').then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
