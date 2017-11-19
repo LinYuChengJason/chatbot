@@ -432,7 +432,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心正義聯盟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -440,7 +440,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心神力女超人的秘密'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -448,7 +448,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心絕處逢山'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -456,7 +456,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心奪魂鋸：遊戲重啟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -464,7 +464,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心雷神索爾3：諸神黃昏'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -472,7 +472,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城中和環球購物中心大佛普拉斯'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -480,7 +480,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場正義聯盟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -488,7 +488,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場神力女超人的秘密'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -496,7 +496,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場絕處逢山'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -504,7 +504,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場奪魂鋸：遊戲重啟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -512,7 +512,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場乒乓少女大逆襲'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -520,7 +520,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場雷神索爾3：諸神黃昏'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -528,7 +528,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場氣象戰'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -536,7 +536,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城林口晰境廣場大佛普拉斯'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -544,7 +544,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場常在你左右'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -552,7 +552,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場正義聯盟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -560,7 +560,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場神力女超人的秘密'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -568,7 +568,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場追兇'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -576,7 +576,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場絕處逢山'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -584,7 +584,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場奪魂鋸：遊戲重啟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -592,7 +592,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場乒乓少女大逆襲'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -600,7 +600,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場雷神索爾3：諸神黃昏'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -608,7 +608,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場氣象戰'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -616,7 +616,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場大佛普拉斯'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -624,7 +624,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '國賓影城新莊晶冠廣場解憂雜貨店'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -632,7 +632,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '台北信義威秀影城正義聯盟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
