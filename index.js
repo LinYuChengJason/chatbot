@@ -1089,7 +1089,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '展覽'){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+    event.reply(aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
@@ -1097,7 +1097,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '世貿1館'){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+    event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
@@ -1105,7 +1105,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '世貿3館'){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+    event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
@@ -1113,55 +1113,7 @@ bot.on('message', function(event) {
       console.log('錯誤產生，錯誤碼：'+error);
     });
   }else if (action == '南港展覽館1館'){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
-      // 傳送訊息成功時，可在此寫程式碼 
-      console.log(aiSpeech);
-    }).catch(function(error) {
-      // 傳送訊息失敗時，可在此寫程式碼 
-      console.log('錯誤產生，錯誤碼：'+error);
-    });
-  }else if (action == ''){
-    event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
+    event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
