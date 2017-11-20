@@ -1048,7 +1048,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城正義聯盟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1056,7 +1056,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城別闖陰陽界'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1064,7 +1064,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城氣象戰'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1072,7 +1072,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城奪魂鋸：遊戲重啟'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1080,7 +1080,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城乒乓少女大逆襲'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1088,7 +1088,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城追兇'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1096,7 +1096,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城神力女超人的秘密'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1104,7 +1104,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城解憂雜貨店'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1112,7 +1112,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城絕處逢山'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
@@ -1120,7 +1120,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == ''){
+  }else if (action == '林口MITSUIOUTLETPARK威秀影城雷神索爾3諸神黃昏'){
     event.reply('您所查詢的電影時刻如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
