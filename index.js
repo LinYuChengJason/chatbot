@@ -1120,8 +1120,24 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
+  }else if (action == '松山文創園區'){
+    event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
+  }else if (action == ''){
+    event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
+      // 傳送訊息成功時，可在此寫程式碼 
+      console.log(aiSpeech);
+    }).catch(function(error) {
+      // 傳送訊息失敗時，可在此寫程式碼 
+      console.log('錯誤產生，錯誤碼：'+error);
+    });
   }else {
-    event.reply('1.只要輸入"電影時刻表"或是影城名稱，就能夠引導你得到該影城的所有電影時刻表!'+'\n'+'ex:電影時刻表或是國賓影城中和環球購物中心。'+'\n'+'2.只要輸入"影城名稱:電影名稱"，就能夠得到該影城的指定電影時刻表!'+'\n'+'ex:中和國賓:正義聯盟'+'\n'+'目前支援雙北兩家影城:威秀、國賓。').then(function(data) {
+    event.reply('1.只要輸入"電影時刻表"或是影城名稱，就能夠引導你得到該影城的所有電影時刻表!'+'\n'+'ex:電影時刻表或是國賓影城中和環球購物中心。'+'\n'+'2.只要輸入"影城名稱:電影名稱"，就能夠得到該影城的指定電影時刻表!'+'\n'+'ex:中和國賓:正義聯盟'+'\n'+'3.只要輸入"展覽"或是展覽地點!'+'\n'+'ex:展覽或是世貿1館'+'\n'+'目前支援雙北兩家影城:威秀、國賓。'+'\n'+'目前支援的展覽地點:世貿1館、世貿3館、南港展覽館1館、松山文創園區、華山文創園區。').then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
     }).catch(function(error) {
