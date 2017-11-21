@@ -1128,7 +1128,7 @@ bot.on('message', function(event) {
       // 傳送訊息失敗時，可在此寫程式碼 
       console.log('錯誤產生，錯誤碼：'+error);
     });
-  }else if (action == '華山文創園區'){
+  }else if (action == '華山1914文化創意產業園區'){
     event.reply('您所查詢的展覽資訊如下:'+'\n'+aiSpeech).then(function(data) {
       // 傳送訊息成功時，可在此寫程式碼 
       console.log(aiSpeech);
