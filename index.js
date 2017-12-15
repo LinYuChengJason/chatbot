@@ -28,6 +28,7 @@ app.get('/database', function(request, response){ //連接到/api/test才會做�
     } else{                                      //.end()為將資料回傳給使用者
       response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
       response.status(200).send(docs);
+      console.log('Succeed');
       response.end();
     }
    });
@@ -50,7 +51,7 @@ bot.on('message', function(event) {
 	    sessionId: '<Jason>'
 	});
 	 
-	request.on('response', function(response) {
+	request.on('rjesponse', function(response) {
 
   	var action = response.result.action;    
   	var aiSpeech = response.result.fulfillment.speech;
