@@ -57,7 +57,7 @@ bot.on('message', function(event) {
   	var aiSpeech = response.result.fulfillment.speech;
   	if (action == '電影時刻表') {
   		var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
-		  collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
+		  collection.find({}, {_id: false, user: true, password: false, desc : false}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
 		    if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
 		      response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
 		    } else{                                      //.end()為將資料回傳給使用者
