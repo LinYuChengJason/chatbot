@@ -1,8 +1,8 @@
 //require為使用模組
-var express = require('express'); 
-var linebot = require('linebot'); 
-var apiai = require('apiai');
-var mongodb = require('mongodb'); //使用模組mongodb
+var express = require('express');//使用模組express 
+var linebot = require('linebot');//使用模組linebot 
+var apiai = require('apiai');//使用模組apiai
+var mongodb = require('mongodb');//使用模組mongodb
 
 //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 var app = express(); 
@@ -20,7 +20,7 @@ mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.Mongo
   }
 });
 
-app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.get('/database', function(request, response){ //連接到/api/database才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
   var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
   collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
     if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
@@ -34,7 +34,7 @@ app.get('/database', function(request, response){ //連接到/api/test才會做�
    });
 });
 
-var api = apiai("96499911855b40b29cc7908eca2ed768");
+var api = apiai("96499911855b40b29cc7908eca2ed768");//與api.ai做連接、驗證
 
 // 連接line，驗證
 var bot = linebot({
@@ -43,28 +43,29 @@ var bot = linebot({
   "channelAccessToken": "OTBP0oDhpEORLXeEi7dgGbROpakoaKRbB4b4p9O2WuXgP/+3KLkohEBC0gE20ayjidJ3Ja4QSmJNwchLiuqsTDnKOMD5CBwKCZ6Bwjbosu5l9kYryfY+5xO1K1chLWdN1LRZRT7By00apZS8mnUZCAdB04t89/1O/w1cDnyilFU="
 }); 
 
-bot.on('message', function(event) {
+//當收到訊息後做出反應
+bot.on('message', function(event) { //當on方法接收到訊息後就會啟動
 
-	var text = event.message.text;
+	var text = event.message.text;//text表示是文字
 
-	var request = api.textRequest(text, {
+	var request = api.textRequest(text, { //將文字丟到api.ai裡面去做語意分析
 	    sessionId: '<Jason>'
 	});
 	 
 	request.on('response', function(response) {
 
-  	var action = response.result.action;    
-  	var aiSpeech = response.result.fulfillment.speech;
+  	var action = response.result.action; //action為api.ai裡自己設定的變數名稱    
+  	var aiSpeech = response.result.fulfillment.speech; //aiSpeech為透過api.ai處理過後的文字
   	if (action == '電影時刻表') {
   		var collection = myDB.collection('data'); //使用myDB的方法collection('data')取得data這個collection
-		  var query = {user : "Andy"};
-		  collection.find(query).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
-		    if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
+		  var query = {user : "Andy"};            //指定抓取user為Andy的所有資料
+		  collection.find(query).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容
+		    if(err){                                     
 		      response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
 		    } else{                                      //.end()為將資料回傳給使用者
 		      //response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
-		      var str = JSON.stringify(docs)
-		      event.reply(str).then(function(data) {
+		      var str = JSON.stringify(docs)             //將抓到的資料轉成JSON格式然後丟給str這個變數
+		      event.reply(str).then(function(data) {     //把str這筆資料在line上面印出來
 			      // 傳送訊息成功時，可在此寫程式碼 
 			      console.log(str);
 			    }).catch(function(error) {
